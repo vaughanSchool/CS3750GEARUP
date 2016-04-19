@@ -1,0 +1,98 @@
+﻿@model GearUp.Models.Contact
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Contact</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.serviceDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.serviceDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.serviceMinutes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.serviceMinutes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.parentName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.parentName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AspNetUser)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AspNetUser)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.schoolID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.schoolID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.contactNotes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.contactNotes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Service.serviceName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Service.serviceName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Student.aspNetUserId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Student.aspNetUserId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ParentServiceCode.serviceCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ParentServiceCode.serviceCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ServiceMethod.serviceMethodName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ServiceMethod.serviceMethodName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.contactID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

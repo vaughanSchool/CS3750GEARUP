@@ -1,0 +1,78 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.smallLogo {
+    float: left;
+    padding-right: 15px;
+    padding-top:5px;
+}
+
+.navbar-form {
+    padding-top:3px;
+}
+
+.dropdown {
+    float:right;
+    padding-top:10px;
+    background-color: transparent;
+    background: transparent;
+    border-color: transparent;
+    padding-left:5px;
+}
+
+.dropdown li { color: #000 } 
+
+
+.glyphicon {
+    color: white;
+}
+
+.btn-info{
+    background:transparent;
+}
+
+.btn-default{
+    background:transparent;
+}
+
+p .lead{
+    font-weight:bold;
+}
+
+#details{
+    max-width: 100%;
+    width: 100%;
+}
+
+#logOff{
+   padding-left:20px;
+}
+
+.bgimg1 {
+    background-image: url("../Content/Images/GearUpLogoSml.png") ;
+}
+
+
+

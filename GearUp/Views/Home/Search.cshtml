@@ -1,0 +1,62 @@
+﻿@model IEnumerable<GearUp.Models.Student>
+
+@{
+    ViewBag.Title = "Search";
+}
+
+<h2>Student Search</h2>
+
+@*<link href="~/Content/jquery-ui-1.10.4.custom.min.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/jquery-ui-1.10.4.custom.min.js"></script>*@
+
+@*<script type="text/javascript">
+        $(document).ready(function () {
+            $("#txtSearch").autocomplete({
+                source: '@Url.Action("GetStudents","Home")',
+                minLength: 0
+            });
+        });
+</script>*@
+
+@*<br />
+@using (@Html.BeginForm())
+{
+    <b>Student Name: </b>
+    @Html.TextBox("searchTerm", null, new { id = "txtSearch" })
+    <input type="submit" value="Search" />
+}﻿*@
+<br />
+<div class="container">
+    <table class="table table-striped">
+        <tr>
+            <th>
+                @Html.DisplayName("First Name")
+            </th>
+            <th>
+                @Html.DisplayName("Last Name")
+            </th>
+            <th>
+                @Html.DisplayName("Gender")
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.firstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.lastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.gender)
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "../Students/Details", new { id = item.studentID })
+                </td>
+            </tr>
+        }
+    </table>
+</div>

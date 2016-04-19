@@ -1,0 +1,120 @@
+﻿@model GearUp.Models.Contact
+@using Microsoft.AspNet.Identity
+@{
+    ViewBag.Title = "Contact Log";
+}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8">
+            <h2>Contact Log</h2>
+        </div>
+        <div class="col-sm-4">
+            <br />
+            <div class="warning">
+                <h4 class="glyphicon-asterisk bg-info ">Indicates required field</h4>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+
+<div class="container-fluid">
+    <div class="bgimg">
+        <form role="form" method="post">
+            <div class="row">
+                <div class="col-sm-4">
+                    @*<div class="form-inline">*@
+                    <div class="form-group">
+                        <label for="inputStudent">Student Name: </label>
+                        @Model.Student.firstName
+                        @Model.Student.lastName
+                    </div>
+                   
+                    <div class="form-group">
+                        <label for="advisor">Advisor: @User.Identity.GetUserName()</label>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="school">School: @Model.Student.School.name<span class="glyphicon-asterisk"></span></label>
+                        
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    @*<div class="form-inline">*@
+                    <div class="form-group">
+                        <label for="serviceDate">Service Date: <span class="glyphicon-asterisk"></span></label>
+                        @Html.TextBoxFor(m=>m.serviceDate, new { htmlAttributes = new { @class = "form-control", type = "date" } })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputMinutes">Minutes: <span class="glyphicon-asterisk"></span></label>
+                        @Html.TextBoxFor(m=>m.serviceMinutes, new { htmlAttributes = new { @class = "form-control", type = "number" } })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="serviceMethod">Service Method: <span class="glyphicon-asterisk"></span></label>
+                        <div>
+                            @Html.DropDownList("serviceMethodID", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.serviceMethodID, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="serviceCode">Service Code: <span class="glyphicon-asterisk"></span></label>
+                        <div>
+                            @Html.DropDownList("serviceCode", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.serviceID, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+
+                    <div class="form-group">
+                        <label for="inputParent">Parent Name: </label>
+                        @Html.TextBoxFor(m=>m.parentName, new { @class = "form-control input-sm", placeholder ="Parent Name" })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="parentOnly">Parent Only?: </label>
+                        @Html.CheckBoxFor(m=>m.parentOnly, new { @class="checkbox-inline"} )
+                    </div>
+
+                    <div class="form-group">
+                        <label for="serviceName">Service Name: <span class="glyphicon-asterisk"></span></label>
+                        <div>
+                            @Html.DropDownList("serviceID", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.serviceID, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="serviceIneligible">Service Ineligible?: <span class="glyphicon-asterisk"></span></label>
+                        @Html.CheckBoxFor(m=>m.serviceIneligible, new { @class="checkbox-inline" } )
+                    </div>
+
+                    <div class="form-group">
+                        <label for="compass">Compass?: <span class="glyphicon-asterisk"></span></label>
+                        @Html.CheckBoxFor(m => m.compass, new { @class = "checkbox-inline" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label for="details">Details: </label>
+                        @Html.TextAreaFor(m=>m.details, new { @class = "form-control input-sm", rows ="6"} )
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Submit Log</button>
+            </div>
+
+        </form>
+    </div>
+</div>
+

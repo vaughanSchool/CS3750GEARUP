@@ -1,0 +1,87 @@
+﻿@model IEnumerable<GearUp.Models.Contact>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.serviceDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.serviceMinutes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.parentName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AspNetUser)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.schoolID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.contactNotes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Service.serviceName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Student.aspNetUserId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ParentServiceCode.serviceCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ServiceMethod.serviceMethodName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.serviceDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.serviceMinutes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.parentName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AspNetUser)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.schoolID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.contactNotes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Service.serviceName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Student.aspNetUserId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ParentServiceCode.serviceCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ServiceMethod.serviceMethodName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.contactID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.contactID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.contactID })
+        </td>
+    </tr>
+}
+
+</table>

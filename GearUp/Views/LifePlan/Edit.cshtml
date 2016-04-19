@@ -1,0 +1,40 @@
+﻿@model IEnumerable<GearUp.Models.Student>
+
+@{
+    ViewBag.Title = "LifePlan Edit";
+}
+
+@*<link href="~/Content/jquery-ui-1.10.4.custom.min.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/jquery-ui-1.10.4.custom.min.js"></script>
+*@
+
+<div style="font-family: Arial">
+<br />
+    @using (@Html.BeginForm())
+    {
+        <b>Student Name: </b>
+        @Html.TextBox("searchTerm", null, new { id = "txtStudentSearch"})
+        <input type="submit" value="Search" />
+    }﻿
+<br />
+</div>
+
+<div>
+    @foreach (var item in Model)
+    {
+        <p>
+            @Html.DisplayFor(modelItem => item.firstName)
+        </p>
+    }
+
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#txtStudentSearch").autocomplete({
+            source: '@Url.Action("GetStudents")',
+            minLength: 1
+        });
+    });
+</script>

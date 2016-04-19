@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="17ca01811971429fb41d4f8d921eb090" Name="Diagram1">
+        <EntityTypeShape EntityType="GearUpDBModel.ACTScore" Width="1.5" PointX="10.25" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GearUpDBModel.Advisor" Width="1.5" PointX="5.75" PointY="17.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GearUpDBModel.Class" Width="1.5" PointX="3" PointY="20.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GearUpDBModel.CollegeStatu" Width="1.5" PointX="0.75" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="GearUpDBModel.Contact" Width="1.5" PointX="10.25" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="GearUpDBModel.CreditRecoveryClass" Width="1.5" PointX="10.25" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GearUpDBModel.Employer" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GearUpDBModel.Note" Width="1.5" PointX="10.25" PointY="18.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GearUpDBModel.ParentServiceCode" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GearUpDBModel.PersonEmployer" Width="1.5" PointX="10.25" PointY="20.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GearUpDBModel.Race" Width="1.5" PointX="5.75" PointY="24" IsExpanded="true" />
+        <EntityTypeShape EntityType="GearUpDBModel.RigorClass" Width="1.5" PointX="10.25" PointY="23.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GearUpDBModel.Schedule" Width="1.5" PointX="5.25" PointY="20.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GearUpDBModel.Scholarship" Width="1.5" PointX="11" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GearUpDBModel.School" Width="1.5" PointX="0.75" PointY="20.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GearUpDBModel.SeniorPaperwork" Width="1.5" PointX="10.25" PointY="26" IsExpanded="true" />
+        <EntityTypeShape EntityType="GearUpDBModel.Service" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GearUpDBModel.ServiceCode" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GearUpDBModel.ServiceMethod" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GearUpDBModel.Student" Width="1.5" PointX="8" PointY="17.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GearUpDBModel.StudentCollege" Width="1.5" PointX="3" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GearUpDBModel.StudentScholarship" Width="1.5" PointX="13.25" PointY="20.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GearUpDBModel.Survey" Width="1.5" PointX="10.25" PointY="32.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GearUpDBModel.Term" Width="1.5" PointX="10.25" PointY="35.5" IsExpanded="true" />
+        <AssociationConnector Association="GearUpDBModel.FK_ACTStudent" ManuallyRouted="false" />
+        <AssociationConnector Association="GearUpDBModel.FK_StudentAdvisor" ManuallyRouted="false" />
+        <AssociationConnector Association="GearUpDBModel.FK_ClassSchool" ManuallyRouted="false" />
+        <AssociationConnector Association="GearUpDBModel.FK_ScheduleClass" ManuallyRouted="false" />
+        <AssociationConnector Association="GearUpDBModel.FK_StudentCollegeStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="GearUpDBModel.FK_CStudent" ManuallyRouted="false" />
+        <AssociationConnector Association="GearUpDBModel.FK_CRCStudent" ManuallyRouted="false" />
+        <AssociationConnector Association="GearUpDBModel.FK_NoteStudent" ManuallyRouted="false" />
+        <AssociationConnector Association="GearUpDBModel.FK_PEStudent" ManuallyRouted="false" />
+        <AssociationConnector Association="GearUpDBModel.FK_StudentRace" ManuallyRouted="false" />
+        <AssociationConnector Association="GearUpDBModel.FK_RCStudent" ManuallyRouted="false" />
+        <AssociationConnector Association="GearUpDBModel.FK_ScheduleTerm" ManuallyRouted="false" />
+        <AssociationConnector Association="GearUpDBModel.FK_SSScholarship" ManuallyRouted="false" />
+        <AssociationConnector Association="GearUpDBModel.FK_Studentcollege" ManuallyRouted="false" />
+        <AssociationConnector Association="GearUpDBModel.FK_StudentSchool1" ManuallyRouted="false" />
+        <AssociationConnector Association="GearUpDBModel.FK_SPStudent" ManuallyRouted="false" />
+        <AssociationConnector Association="GearUpDBModel.FK_SSStudent" ManuallyRouted="false" />
+        <AssociationConnector Association="GearUpDBModel.FK_StudentCollegeStudent" ManuallyRouted="false" />
+        <AssociationConnector Association="GearUpDBModel.FK_SurveyStudent" ManuallyRouted="false" />
+        <AssociationConnector Association="GearUpDBModel.FK_TermStudent" ManuallyRouted="false" />
+        <AssociationConnector Association="GearUpDBModel.FK_CAdvisor" />
+        <AssociationConnector Association="GearUpDBModel.FK_CParentService" />
+        <AssociationConnector Association="GearUpDBModel.FK_CService" />
+        <AssociationConnector Association="GearUpDBModel.FK_CServiceMethod" />
+        <AssociationConnector Association="GearUpDBModel.FK_ServiceCode" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

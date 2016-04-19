@@ -1,0 +1,75 @@
+﻿@model GearUp.Models.StudentViewModel
+@{
+    ViewBag.Title = "Student Profile";
+}
+<h2></h2>
+<div>
+    <h4>Student</h4>
+    <hr />
+    @*Tabs to change view*@
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
+                <li role="presentation"><a href="#contactLog" aria-controls="contactLog" role="tab" data-toggle="tab">Contact Log</a></li>
+                <li role="presentation"><a href="#lifeplan" aria-controls="lifeplan" role="tab" data-toggle="tab">Life Plan</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="tab-content">
+            @*Profile Tab*@
+            <div role="tabpanel" class="tab-pane fade in active" id="profile">
+                @*Student information tab **CS 3700 Class section***@
+                
+            </div>
+            @*Contact Log Tab*@
+            <div role="tabpanel" class="tab-pane fade" id="contactLog">
+                <div class="col-md-12">
+                    <p>Contact Log</p>
+                    @Html.ActionLink("Create New", "../StudentContactLog/Create", new { studentID = Model.student.studentID } )
+                    <table class="table">
+                        <tr>
+                            <th>Advisor</th>
+                            <th>School</th>
+                            <th>Date</th>
+                            <th>Method</th>
+                            <th>Code</th>
+                            <th></th>
+                        </tr>
+                        @foreach (var item in Model.contactLog )
+                        {
+                            <tr>
+                                <td>
+                                    @Html.Display(item.Advisor.AspNetUserID )
+                                </td>
+                                <td>
+                                    @Html.Display(Model.schools.Where(s=>s.schoolID == item.schoolID).Select(s=>s.name).ToList()[0] )
+                                </td>
+                                <td>
+                                    @Html.Display(item.serviceDate.ToString() )
+                                </td>
+                                <td>
+                                    @Html.Display(item.ServiceMethod.name )
+                                </td>
+                                <td>
+                                    @Html.Display(item.Service.ServiceCode.description)
+                                </td>
+
+                                <td>
+                                    @Html.ActionLink("Edit", "Edit", "StudentContactLog", new { id = item.serviceID }, null) | @Html.ActionLink("Delete", "StudentContactLog", "Hires", new { id = item.serviceID }, null)
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane fade in active" id="lifeplan">
+                @*Student lifeplan tab **CS 3750 Class section***@
+
+            </div>
+            
+        </div> @*end tab-content*@
+    </div>
+
+</div>

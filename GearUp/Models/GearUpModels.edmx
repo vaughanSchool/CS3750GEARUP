@@ -1,0 +1,1777 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="GearUpDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ACTScore">
+          <Key>
+            <PropertyRef Name="actID" />
+          </Key>
+          <Property Name="actID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="studentID" Type="int" Nullable="false" />
+          <Property Name="attmepted" Type="tinyint" />
+          <Property Name="dateAttempted" Type="date" />
+          <Property Name="compositeScore" Type="tinyint" />
+          <Property Name="englishScore" Type="tinyint" />
+          <Property Name="mathScore" Type="tinyint" />
+          <Property Name="readingScore" Type="tinyint" />
+          <Property Name="scienceScore" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="Advisor">
+          <Key>
+            <PropertyRef Name="advisorID" />
+          </Key>
+          <Property Name="advisorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="code" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="firstName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="lastName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="AspNetUserID" Type="nvarchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="Class">
+          <Key>
+            <PropertyRef Name="classID" />
+          </Key>
+          <Property Name="classID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="schoolID" Type="int" Nullable="false" />
+          <Property Name="teacherName" Type="char" MaxLength="50" />
+          <Property Name="className" Type="char" MaxLength="50" />
+          <Property Name="rigorCode" Type="char" MaxLength="2" />
+        </EntityType>
+        <EntityType Name="CollegeStatus">
+          <Key>
+            <PropertyRef Name="collegeStatusID" />
+          </Key>
+          <Property Name="collegeStatusID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="char" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="contactID" />
+          </Key>
+          <Property Name="contactID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="studentID" Type="int" Nullable="false" />
+          <Property Name="advisorID" Type="int" Nullable="false" />
+          <Property Name="schoolID" Type="int" Nullable="false" />
+          <Property Name="serviceMethodID" Type="tinyint" Nullable="false" />
+          <Property Name="serviceID" Type="smallint" />
+          <Property Name="parentServiceID" Type="tinyint" />
+          <Property Name="serviceDate" Type="date" />
+          <Property Name="serviceMinutes" Type="smallint" />
+          <Property Name="parentName" Type="varchar" MaxLength="100" />
+          <Property Name="details" Type="varchar(max)" />
+          <Property Name="parentOnly" Type="bit" Nullable="false" />
+          <Property Name="serviceIneligible" Type="bit" Nullable="false" />
+          <Property Name="compass" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CreditRecoveryClass">
+          <Key>
+            <PropertyRef Name="CreditRecovertyClassID" />
+          </Key>
+          <Property Name="CreditRecovertyClassID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="studentID" Type="int" />
+          <Property Name="name" Type="int" />
+        </EntityType>
+        <EntityType Name="Employer">
+          <Key>
+            <PropertyRef Name="employerID" />
+          </Key>
+          <Property Name="employerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="char" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Note">
+          <Key>
+            <PropertyRef Name="noteID" />
+          </Key>
+          <Property Name="noteID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="studentID" Type="int" Nullable="false" />
+          <Property Name="date" Type="date" />
+          <Property Name="note" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="ParentServiceCode">
+          <Key>
+            <PropertyRef Name="parentServiceID" />
+          </Key>
+          <Property Name="parentServiceID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="code" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PersonEmployer">
+          <Key>
+            <PropertyRef Name="personEmployerID" />
+          </Key>
+          <Property Name="personEmployerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="studentID" Type="int" Nullable="false" />
+          <Property Name="employerID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Race">
+          <Key>
+            <PropertyRef Name="raceID" />
+          </Key>
+          <Property Name="raceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RigorClass">
+          <Key>
+            <PropertyRef Name="rigorClassID" />
+          </Key>
+          <Property Name="rigorClassID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="studentID" Type="int" />
+          <Property Name="name" Type="int" />
+        </EntityType>
+        <EntityType Name="Schedule">
+          <Key>
+            <PropertyRef Name="scheduleID" />
+          </Key>
+          <Property Name="scheduleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="classID" Type="int" Nullable="false" />
+          <Property Name="termID" Type="int" Nullable="false" />
+          <Property Name="period" Type="tinyint" />
+          <Property Name="crPointsNeeded" Type="int" />
+        </EntityType>
+        <EntityType Name="Scholarship">
+          <Key>
+            <PropertyRef Name="scholarshipID" />
+          </Key>
+          <Property Name="scholarshipID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="char" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="School">
+          <Key>
+            <PropertyRef Name="schoolID" />
+          </Key>
+          <Property Name="schoolID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="schoolCode" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="name" Type="char" MaxLength="20" />
+          <Property Name="isCollege" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SeniorPaperwork">
+          <Key>
+            <PropertyRef Name="seniorPaperworkID" />
+          </Key>
+          <Property Name="seniorPaperworkID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="studentID" Type="int" Nullable="false" />
+          <Property Name="ferpaReleaseComplete" Type="bit" />
+          <Property Name="uheaaFafsaStatus" Type="bit" />
+          <Property Name="fafsaVerification" Type="bit" />
+          <Property Name="pellGrantAmount" Type="smallmoney" />
+          <Property Name="collegeStateDate" Type="date" />
+          <Property Name="collegeID" Type="int" />
+          <Property Name="exitStatus1" Type="char" MaxLength="1" />
+          <Property Name="exitStatus2" Type="char" MaxLength="1" />
+          <Property Name="exitStatus3" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="Service">
+          <Key>
+            <PropertyRef Name="serviceID" />
+          </Key>
+          <Property Name="serviceID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="serviceCodeID" Type="tinyint" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ServiceCode">
+          <Key>
+            <PropertyRef Name="serviceCodeID" />
+          </Key>
+          <Property Name="serviceCodeID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="code" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ServiceMethod">
+          <Key>
+            <PropertyRef Name="serviceMethodID" />
+          </Key>
+          <Property Name="serviceMethodID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="studentID" />
+          </Key>
+          <Property Name="studentID" Type="int" Nullable="false" />
+          <Property Name="schoolID" Type="int" Nullable="false" />
+          <Property Name="raceID" Type="int" />
+          <Property Name="advisorID" Type="int" />
+          <Property Name="firstName" Type="varchar" MaxLength="50" />
+          <Property Name="lastName" Type="varchar" MaxLength="50" />
+          <Property Name="gender" Type="char" MaxLength="1" />
+          <Property Name="startDate" Type="date" />
+          <Property Name="classOf" Type="smallint" />
+          <Property Name="hispanic" Type="bit" />
+          <Property Name="iep" Type="bit" />
+          <Property Name="lep" Type="bit" />
+          <Property Name="hasSiblings" Type="bit" />
+          <Property Name="siblingNames" Type="varchar(max)" />
+          <Property Name="collegeGreenLight" Type="bit" />
+          <Property Name="lifePlanStatus" Type="bit" />
+          <Property Name="careerGoal1" Type="varchar" MaxLength="50" />
+          <Property Name="careerGoal2" Type="varchar" MaxLength="50" />
+          <Property Name="mathLevel" Type="varchar" MaxLength="50" />
+          <Property Name="parentsPreferredLanguage" Type="varchar" MaxLength="20" />
+          <Property Name="undocumented" Type="bit" />
+          <Property Name="compassStudentID" Type="int" />
+        </EntityType>
+        <EntityType Name="StudentCollege">
+          <Key>
+            <PropertyRef Name="studentCollegeID" />
+          </Key>
+          <Property Name="studentCollegeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="studentID" Type="int" Nullable="false" />
+          <Property Name="schoolID" Type="int" Nullable="false" />
+          <Property Name="preferenceOrder" Type="tinyint" />
+          <Property Name="collegeStatusID" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StudentScholarship">
+          <Key>
+            <PropertyRef Name="studentScholarshipID" />
+          </Key>
+          <Property Name="studentScholarshipID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="studentID" Type="int" Nullable="false" />
+          <Property Name="scholarshipID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Survey">
+          <Key>
+            <PropertyRef Name="surveyID" />
+          </Key>
+          <Property Name="surveyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="studentID" Type="int" Nullable="false" />
+          <Property Name="studentCompleted" Type="bit" Nullable="false" />
+          <Property Name="parentCompleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Term">
+          <Key>
+            <PropertyRef Name="termID" />
+          </Key>
+          <Property Name="termID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="studentID" Type="int" Nullable="false" />
+          <Property Name="year" Type="date" />
+          <Property Name="term" Type="tinyint" />
+          <Property Name="absences" Type="tinyint" />
+          <Property Name="gpaPoints" Type="smallint" />
+          <Property Name="gpaHours" Type="smallint" />
+        </EntityType>
+        <Association Name="FK_ACTStudent">
+          <End Role="Student" Type="Self.Student" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ACTScore" Type="Self.ACTScore" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="studentID" />
+            </Principal>
+            <Dependent Role="ACTScore">
+              <PropertyRef Name="studentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CAdvisor">
+          <End Role="Advisor" Type="Self.Advisor" Multiplicity="1" />
+          <End Role="Contact" Type="Self.Contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Advisor">
+              <PropertyRef Name="advisorID" />
+            </Principal>
+            <Dependent Role="Contact">
+              <PropertyRef Name="advisorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClassSchool">
+          <End Role="School" Type="Self.School" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Class" Type="Self.Class" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="School">
+              <PropertyRef Name="schoolID" />
+            </Principal>
+            <Dependent Role="Class">
+              <PropertyRef Name="schoolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CParentService">
+          <End Role="ParentServiceCode" Type="Self.ParentServiceCode" Multiplicity="0..1" />
+          <End Role="Contact" Type="Self.Contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ParentServiceCode">
+              <PropertyRef Name="parentServiceID" />
+            </Principal>
+            <Dependent Role="Contact">
+              <PropertyRef Name="parentServiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CRCStudent">
+          <End Role="Student" Type="Self.Student" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CreditRecoveryClass" Type="Self.CreditRecoveryClass" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="studentID" />
+            </Principal>
+            <Dependent Role="CreditRecoveryClass">
+              <PropertyRef Name="studentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CService">
+          <End Role="Service" Type="Self.Service" Multiplicity="0..1" />
+          <End Role="Contact" Type="Self.Contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Service">
+              <PropertyRef Name="serviceID" />
+            </Principal>
+            <Dependent Role="Contact">
+              <PropertyRef Name="serviceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CServiceMethod">
+          <End Role="ServiceMethod" Type="Self.ServiceMethod" Multiplicity="1" />
+          <End Role="Contact" Type="Self.Contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceMethod">
+              <PropertyRef Name="serviceMethodID" />
+            </Principal>
+            <Dependent Role="Contact">
+              <PropertyRef Name="serviceMethodID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CStudent">
+          <End Role="Student" Type="Self.Student" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Contact" Type="Self.Contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="studentID" />
+            </Principal>
+            <Dependent Role="Contact">
+              <PropertyRef Name="studentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NoteStudent">
+          <End Role="Student" Type="Self.Student" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Note" Type="Self.Note" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="studentID" />
+            </Principal>
+            <Dependent Role="Note">
+              <PropertyRef Name="studentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PEStudent">
+          <End Role="Student" Type="Self.Student" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PersonEmployer" Type="Self.PersonEmployer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="studentID" />
+            </Principal>
+            <Dependent Role="PersonEmployer">
+              <PropertyRef Name="studentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RCStudent">
+          <End Role="Student" Type="Self.Student" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="RigorClass" Type="Self.RigorClass" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="studentID" />
+            </Principal>
+            <Dependent Role="RigorClass">
+              <PropertyRef Name="studentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ScheduleClass">
+          <End Role="Class" Type="Self.Class" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class">
+              <PropertyRef Name="classID" />
+            </Principal>
+            <Dependent Role="Schedule">
+              <PropertyRef Name="classID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ScheduleTerm">
+          <End Role="Term" Type="Self.Term" Multiplicity="1" />
+          <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Term">
+              <PropertyRef Name="termID" />
+            </Principal>
+            <Dependent Role="Schedule">
+              <PropertyRef Name="termID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ServiceCode">
+          <End Role="ServiceCode" Type="Self.ServiceCode" Multiplicity="1" />
+          <End Role="Service" Type="Self.Service" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceCode">
+              <PropertyRef Name="serviceCodeID" />
+            </Principal>
+            <Dependent Role="Service">
+              <PropertyRef Name="serviceCodeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SPStudent">
+          <End Role="Student" Type="Self.Student" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="SeniorPaperwork" Type="Self.SeniorPaperwork" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="studentID" />
+            </Principal>
+            <Dependent Role="SeniorPaperwork">
+              <PropertyRef Name="studentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SSScholarship">
+          <End Role="Scholarship" Type="Self.Scholarship" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="StudentScholarship" Type="Self.StudentScholarship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Scholarship">
+              <PropertyRef Name="scholarshipID" />
+            </Principal>
+            <Dependent Role="StudentScholarship">
+              <PropertyRef Name="scholarshipID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SSStudent">
+          <End Role="Student" Type="Self.Student" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="StudentScholarship" Type="Self.StudentScholarship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="studentID" />
+            </Principal>
+            <Dependent Role="StudentScholarship">
+              <PropertyRef Name="studentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentAdvisor">
+          <End Role="Advisor" Type="Self.Advisor" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Advisor">
+              <PropertyRef Name="advisorID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="advisorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Studentcollege">
+          <End Role="School" Type="Self.School" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="StudentCollege" Type="Self.StudentCollege" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="School">
+              <PropertyRef Name="schoolID" />
+            </Principal>
+            <Dependent Role="StudentCollege">
+              <PropertyRef Name="schoolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentCollegeStatus">
+          <End Role="CollegeStatus" Type="Self.CollegeStatus" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="StudentCollege" Type="Self.StudentCollege" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CollegeStatus">
+              <PropertyRef Name="collegeStatusID" />
+            </Principal>
+            <Dependent Role="StudentCollege">
+              <PropertyRef Name="collegeStatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentCollegeStudent">
+          <End Role="Student" Type="Self.Student" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="StudentCollege" Type="Self.StudentCollege" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="studentID" />
+            </Principal>
+            <Dependent Role="StudentCollege">
+              <PropertyRef Name="studentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentRace">
+          <End Role="Race" Type="Self.Race" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Race">
+              <PropertyRef Name="raceID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="raceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentSchool1">
+          <End Role="School" Type="Self.School" Multiplicity="1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="School">
+              <PropertyRef Name="schoolID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="schoolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SurveyStudent">
+          <End Role="Student" Type="Self.Student" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Survey" Type="Self.Survey" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="studentID" />
+            </Principal>
+            <Dependent Role="Survey">
+              <PropertyRef Name="studentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TermStudent">
+          <End Role="Student" Type="Self.Student" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Term" Type="Self.Term" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="studentID" />
+            </Principal>
+            <Dependent Role="Term">
+              <PropertyRef Name="studentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GearUpDBModelStoreContainer">
+          <EntitySet Name="ACTScore" EntityType="Self.ACTScore" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Advisor" EntityType="Self.Advisor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Class" EntityType="Self.Class" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CollegeStatus" EntityType="Self.CollegeStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CreditRecoveryClass" EntityType="Self.CreditRecoveryClass" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employer" EntityType="Self.Employer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Note" EntityType="Self.Note" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ParentServiceCode" EntityType="Self.ParentServiceCode" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PersonEmployer" EntityType="Self.PersonEmployer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Race" EntityType="Self.Race" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RigorClass" EntityType="Self.RigorClass" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Schedule" EntityType="Self.Schedule" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Scholarship" EntityType="Self.Scholarship" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="School" EntityType="Self.School" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SeniorPaperwork" EntityType="Self.SeniorPaperwork" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Service" EntityType="Self.Service" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ServiceCode" EntityType="Self.ServiceCode" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ServiceMethod" EntityType="Self.ServiceMethod" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentCollege" EntityType="Self.StudentCollege" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentScholarship" EntityType="Self.StudentScholarship" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Survey" EntityType="Self.Survey" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Term" EntityType="Self.Term" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ACTStudent" Association="Self.FK_ACTStudent">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="ACTScore" EntitySet="ACTScore" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CAdvisor" Association="Self.FK_CAdvisor">
+            <End Role="Advisor" EntitySet="Advisor" />
+            <End Role="Contact" EntitySet="Contact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClassSchool" Association="Self.FK_ClassSchool">
+            <End Role="School" EntitySet="School" />
+            <End Role="Class" EntitySet="Class" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CParentService" Association="Self.FK_CParentService">
+            <End Role="ParentServiceCode" EntitySet="ParentServiceCode" />
+            <End Role="Contact" EntitySet="Contact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CRCStudent" Association="Self.FK_CRCStudent">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="CreditRecoveryClass" EntitySet="CreditRecoveryClass" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CService" Association="Self.FK_CService">
+            <End Role="Service" EntitySet="Service" />
+            <End Role="Contact" EntitySet="Contact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CServiceMethod" Association="Self.FK_CServiceMethod">
+            <End Role="ServiceMethod" EntitySet="ServiceMethod" />
+            <End Role="Contact" EntitySet="Contact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CStudent" Association="Self.FK_CStudent">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Contact" EntitySet="Contact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NoteStudent" Association="Self.FK_NoteStudent">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Note" EntitySet="Note" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PEStudent" Association="Self.FK_PEStudent">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="PersonEmployer" EntitySet="PersonEmployer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RCStudent" Association="Self.FK_RCStudent">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="RigorClass" EntitySet="RigorClass" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ScheduleClass" Association="Self.FK_ScheduleClass">
+            <End Role="Class" EntitySet="Class" />
+            <End Role="Schedule" EntitySet="Schedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ScheduleTerm" Association="Self.FK_ScheduleTerm">
+            <End Role="Term" EntitySet="Term" />
+            <End Role="Schedule" EntitySet="Schedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ServiceCode" Association="Self.FK_ServiceCode">
+            <End Role="ServiceCode" EntitySet="ServiceCode" />
+            <End Role="Service" EntitySet="Service" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SPStudent" Association="Self.FK_SPStudent">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="SeniorPaperwork" EntitySet="SeniorPaperwork" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SSScholarship" Association="Self.FK_SSScholarship">
+            <End Role="Scholarship" EntitySet="Scholarship" />
+            <End Role="StudentScholarship" EntitySet="StudentScholarship" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SSStudent" Association="Self.FK_SSStudent">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="StudentScholarship" EntitySet="StudentScholarship" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentAdvisor" Association="Self.FK_StudentAdvisor">
+            <End Role="Advisor" EntitySet="Advisor" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Studentcollege" Association="Self.FK_Studentcollege">
+            <End Role="School" EntitySet="School" />
+            <End Role="StudentCollege" EntitySet="StudentCollege" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentCollegeStatus" Association="Self.FK_StudentCollegeStatus">
+            <End Role="CollegeStatus" EntitySet="CollegeStatus" />
+            <End Role="StudentCollege" EntitySet="StudentCollege" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentCollegeStudent" Association="Self.FK_StudentCollegeStudent">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="StudentCollege" EntitySet="StudentCollege" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentRace" Association="Self.FK_StudentRace">
+            <End Role="Race" EntitySet="Race" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentSchool1" Association="Self.FK_StudentSchool1">
+            <End Role="School" EntitySet="School" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SurveyStudent" Association="Self.FK_SurveyStudent">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Survey" EntitySet="Survey" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TermStudent" Association="Self.FK_TermStudent">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Term" EntitySet="Term" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GearUpDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ACTScore">
+          <Key>
+            <PropertyRef Name="actID" />
+          </Key>
+          <Property Name="actID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="studentID" Type="Int32" Nullable="false" />
+          <Property Name="attmepted" Type="Byte" />
+          <Property Name="dateAttempted" Type="DateTime" Precision="0" />
+          <Property Name="compositeScore" Type="Byte" />
+          <Property Name="englishScore" Type="Byte" />
+          <Property Name="mathScore" Type="Byte" />
+          <Property Name="readingScore" Type="Byte" />
+          <Property Name="scienceScore" Type="Byte" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_ACTStudent" FromRole="ACTScore" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="Advisor">
+          <Key>
+            <PropertyRef Name="advisorID" />
+          </Key>
+          <Property Name="advisorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="code" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="firstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="lastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AspNetUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Students" Relationship="Self.FK_StudentAdvisor" FromRole="Advisor" ToRole="Student" />
+          <NavigationProperty Name="Contacts" Relationship="GearUpDBModel.FK_CAdvisor" FromRole="Advisor" ToRole="Contact" />
+        </EntityType>
+        <EntityType Name="Class">
+          <Key>
+            <PropertyRef Name="classID" />
+          </Key>
+          <Property Name="classID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="schoolID" Type="Int32" Nullable="false" />
+          <Property Name="teacherName" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Name="className" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Name="rigorCode" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="School" Relationship="Self.FK_ClassSchool" FromRole="Class" ToRole="School" />
+          <NavigationProperty Name="Schedules" Relationship="Self.FK_ScheduleClass" FromRole="Class" ToRole="Schedule" />
+        </EntityType>
+        <EntityType Name="CollegeStatu">
+          <Key>
+            <PropertyRef Name="collegeStatusID" />
+          </Key>
+          <Property Name="collegeStatusID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="StudentColleges" Relationship="Self.FK_StudentCollegeStatus" FromRole="CollegeStatus" ToRole="StudentCollege" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="contactID" />
+          </Key>
+          <Property Name="contactID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="studentID" Type="Int32" Nullable="false" />
+          <Property Name="advisorID" Type="Int32" Nullable="false" />
+          <Property Name="schoolID" Type="Int32" Nullable="false" />
+          <Property Name="serviceMethodID" Type="Byte" Nullable="false" />
+          <Property Name="serviceID" Type="Int16" />
+          <Property Name="parentServiceID" Type="Byte" />
+          <Property Name="serviceDate" Type="DateTime" Precision="0" />
+          <Property Name="serviceMinutes" Type="Int16" />
+          <Property Name="parentName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="details" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="parentOnly" Type="Boolean" Nullable="false" />
+          <Property Name="serviceIneligible" Type="Boolean" Nullable="false" />
+          <Property Name="compass" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_CStudent" FromRole="Contact" ToRole="Student" />
+          <NavigationProperty Name="Advisor" Relationship="GearUpDBModel.FK_CAdvisor" FromRole="Contact" ToRole="Advisor" />
+          <NavigationProperty Name="ParentServiceCode" Relationship="GearUpDBModel.FK_CParentService" FromRole="Contact" ToRole="ParentServiceCode" />
+          <NavigationProperty Name="Service" Relationship="GearUpDBModel.FK_CService" FromRole="Contact" ToRole="Service" />
+          <NavigationProperty Name="ServiceMethod" Relationship="GearUpDBModel.FK_CServiceMethod" FromRole="Contact" ToRole="ServiceMethod" />
+        </EntityType>
+        <EntityType Name="CreditRecoveryClass">
+          <Key>
+            <PropertyRef Name="CreditRecovertyClassID" />
+          </Key>
+          <Property Name="CreditRecovertyClassID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="studentID" Type="Int32" />
+          <Property Name="name" Type="Int32" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_CRCStudent" FromRole="CreditRecoveryClass" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="Employer">
+          <Key>
+            <PropertyRef Name="employerID" />
+          </Key>
+          <Property Name="employerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Note">
+          <Key>
+            <PropertyRef Name="noteID" />
+          </Key>
+          <Property Name="noteID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="studentID" Type="Int32" Nullable="false" />
+          <Property Name="date" Type="DateTime" Precision="0" />
+          <Property Name="note1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_NoteStudent" FromRole="Note" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="ParentServiceCode">
+          <Key>
+            <PropertyRef Name="parentServiceID" />
+          </Key>
+          <Property Name="parentServiceID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="code" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Contacts" Relationship="GearUpDBModel.FK_CParentService" FromRole="ParentServiceCode" ToRole="Contact" />
+        </EntityType>
+        <EntityType Name="PersonEmployer">
+          <Key>
+            <PropertyRef Name="personEmployerID" />
+          </Key>
+          <Property Name="personEmployerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="studentID" Type="Int32" Nullable="false" />
+          <Property Name="employerID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_PEStudent" FromRole="PersonEmployer" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="Race">
+          <Key>
+            <PropertyRef Name="raceID" />
+          </Key>
+          <Property Name="raceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Students" Relationship="Self.FK_StudentRace" FromRole="Race" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="RigorClass">
+          <Key>
+            <PropertyRef Name="rigorClassID" />
+          </Key>
+          <Property Name="rigorClassID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="studentID" Type="Int32" />
+          <Property Name="name" Type="Int32" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_RCStudent" FromRole="RigorClass" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="Schedule">
+          <Key>
+            <PropertyRef Name="scheduleID" />
+          </Key>
+          <Property Name="scheduleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="classID" Type="Int32" Nullable="false" />
+          <Property Name="termID" Type="Int32" Nullable="false" />
+          <Property Name="period" Type="Byte" />
+          <Property Name="crPointsNeeded" Type="Int32" />
+          <NavigationProperty Name="Class" Relationship="Self.FK_ScheduleClass" FromRole="Schedule" ToRole="Class" />
+          <NavigationProperty Name="Term" Relationship="Self.FK_ScheduleTerm" FromRole="Schedule" ToRole="Term" />
+        </EntityType>
+        <EntityType Name="Scholarship">
+          <Key>
+            <PropertyRef Name="scholarshipID" />
+          </Key>
+          <Property Name="scholarshipID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="StudentScholarships" Relationship="Self.FK_SSScholarship" FromRole="Scholarship" ToRole="StudentScholarship" />
+        </EntityType>
+        <EntityType Name="School">
+          <Key>
+            <PropertyRef Name="schoolID" />
+          </Key>
+          <Property Name="schoolID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="schoolCode" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="isCollege" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Classes" Relationship="Self.FK_ClassSchool" FromRole="School" ToRole="Class" />
+          <NavigationProperty Name="StudentColleges" Relationship="Self.FK_Studentcollege" FromRole="School" ToRole="StudentCollege" />
+          <NavigationProperty Name="Students" Relationship="Self.FK_StudentSchool1" FromRole="School" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="SeniorPaperwork">
+          <Key>
+            <PropertyRef Name="seniorPaperworkID" />
+          </Key>
+          <Property Name="seniorPaperworkID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="studentID" Type="Int32" Nullable="false" />
+          <Property Name="ferpaReleaseComplete" Type="Boolean" />
+          <Property Name="uheaaFafsaStatus" Type="Boolean" />
+          <Property Name="fafsaVerification" Type="Boolean" />
+          <Property Name="pellGrantAmount" Type="Decimal" Precision="10" Scale="4" />
+          <Property Name="collegeStateDate" Type="DateTime" Precision="0" />
+          <Property Name="collegeID" Type="Int32" />
+          <Property Name="exitStatus1" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="exitStatus2" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="exitStatus3" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_SPStudent" FromRole="SeniorPaperwork" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="Service">
+          <Key>
+            <PropertyRef Name="serviceID" />
+          </Key>
+          <Property Name="serviceID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="serviceCodeID" Type="Byte" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Contacts" Relationship="GearUpDBModel.FK_CService" FromRole="Service" ToRole="Contact" />
+          <NavigationProperty Name="ServiceCode" Relationship="GearUpDBModel.FK_ServiceCode" FromRole="Service" ToRole="ServiceCode" />
+        </EntityType>
+        <EntityType Name="ServiceCode">
+          <Key>
+            <PropertyRef Name="serviceCodeID" />
+          </Key>
+          <Property Name="serviceCodeID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="code" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Services" Relationship="GearUpDBModel.FK_ServiceCode" FromRole="ServiceCode" ToRole="Service" />
+        </EntityType>
+        <EntityType Name="ServiceMethod">
+          <Key>
+            <PropertyRef Name="serviceMethodID" />
+          </Key>
+          <Property Name="serviceMethodID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Contacts" Relationship="GearUpDBModel.FK_CServiceMethod" FromRole="ServiceMethod" ToRole="Contact" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="studentID" />
+          </Key>
+          <Property Name="studentID" Type="Int32" Nullable="false" />
+          <Property Name="schoolID" Type="Int32" Nullable="false" />
+          <Property Name="raceID" Type="Int32" />
+          <Property Name="advisorID" Type="Int32" />
+          <Property Name="firstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="lastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="gender" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="startDate" Type="DateTime" Precision="0" />
+          <Property Name="classOf" Type="Int16" />
+          <Property Name="hispanic" Type="Boolean" />
+          <Property Name="iep" Type="Boolean" />
+          <Property Name="lep" Type="Boolean" />
+          <Property Name="hasSiblings" Type="Boolean" />
+          <Property Name="siblingNames" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="collegeGreenLight" Type="Boolean" />
+          <Property Name="lifePlanStatus" Type="Boolean" />
+          <Property Name="careerGoal1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="careerGoal2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="mathLevel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="parentsPreferredLanguage" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="undocumented" Type="Boolean" />
+          <Property Name="compassStudentID" Type="Int32" />
+          <NavigationProperty Name="ACTScores" Relationship="Self.FK_ACTStudent" FromRole="Student" ToRole="ACTScore" />
+          <NavigationProperty Name="Advisor" Relationship="Self.FK_StudentAdvisor" FromRole="Student" ToRole="Advisor" />
+          <NavigationProperty Name="Contacts" Relationship="Self.FK_CStudent" FromRole="Student" ToRole="Contact" />
+          <NavigationProperty Name="CreditRecoveryClasses" Relationship="Self.FK_CRCStudent" FromRole="Student" ToRole="CreditRecoveryClass" />
+          <NavigationProperty Name="Notes" Relationship="Self.FK_NoteStudent" FromRole="Student" ToRole="Note" />
+          <NavigationProperty Name="PersonEmployers" Relationship="Self.FK_PEStudent" FromRole="Student" ToRole="PersonEmployer" />
+          <NavigationProperty Name="Race" Relationship="Self.FK_StudentRace" FromRole="Student" ToRole="Race" />
+          <NavigationProperty Name="RigorClasses" Relationship="Self.FK_RCStudent" FromRole="Student" ToRole="RigorClass" />
+          <NavigationProperty Name="School" Relationship="Self.FK_StudentSchool1" FromRole="Student" ToRole="School" />
+          <NavigationProperty Name="SeniorPaperworks" Relationship="Self.FK_SPStudent" FromRole="Student" ToRole="SeniorPaperwork" />
+          <NavigationProperty Name="StudentScholarships" Relationship="Self.FK_SSStudent" FromRole="Student" ToRole="StudentScholarship" />
+          <NavigationProperty Name="StudentColleges" Relationship="Self.FK_StudentCollegeStudent" FromRole="Student" ToRole="StudentCollege" />
+          <NavigationProperty Name="Surveys" Relationship="Self.FK_SurveyStudent" FromRole="Student" ToRole="Survey" />
+          <NavigationProperty Name="Terms" Relationship="Self.FK_TermStudent" FromRole="Student" ToRole="Term" />
+        </EntityType>
+        <EntityType Name="StudentCollege">
+          <Key>
+            <PropertyRef Name="studentCollegeID" />
+          </Key>
+          <Property Name="studentCollegeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="studentID" Type="Int32" Nullable="false" />
+          <Property Name="schoolID" Type="Int32" Nullable="false" />
+          <Property Name="preferenceOrder" Type="Byte" />
+          <Property Name="collegeStatusID" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="CollegeStatu" Relationship="Self.FK_StudentCollegeStatus" FromRole="StudentCollege" ToRole="CollegeStatus" />
+          <NavigationProperty Name="School" Relationship="Self.FK_Studentcollege" FromRole="StudentCollege" ToRole="School" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_StudentCollegeStudent" FromRole="StudentCollege" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="StudentScholarship">
+          <Key>
+            <PropertyRef Name="studentScholarshipID" />
+          </Key>
+          <Property Name="studentScholarshipID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="studentID" Type="Int32" Nullable="false" />
+          <Property Name="scholarshipID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Scholarship" Relationship="Self.FK_SSScholarship" FromRole="StudentScholarship" ToRole="Scholarship" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_SSStudent" FromRole="StudentScholarship" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="Survey">
+          <Key>
+            <PropertyRef Name="surveyID" />
+          </Key>
+          <Property Name="surveyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="studentID" Type="Int32" Nullable="false" />
+          <Property Name="studentCompleted" Type="Boolean" Nullable="false" />
+          <Property Name="parentCompleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_SurveyStudent" FromRole="Survey" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="Term">
+          <Key>
+            <PropertyRef Name="termID" />
+          </Key>
+          <Property Name="termID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="studentID" Type="Int32" Nullable="false" />
+          <Property Name="year" Type="DateTime" Precision="0" />
+          <Property Name="term1" Type="Byte" />
+          <Property Name="absences" Type="Byte" />
+          <Property Name="gpaPoints" Type="Int16" />
+          <Property Name="gpaHours" Type="Int16" />
+          <NavigationProperty Name="Schedules" Relationship="Self.FK_ScheduleTerm" FromRole="Term" ToRole="Schedule" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_TermStudent" FromRole="Term" ToRole="Student" />
+        </EntityType>
+        <Association Name="FK_ACTStudent">
+          <End Role="Student" Type="Self.Student" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ACTScore" Type="Self.ACTScore" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="studentID" />
+            </Principal>
+            <Dependent Role="ACTScore">
+              <PropertyRef Name="studentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentAdvisor">
+          <End Role="Advisor" Type="Self.Advisor" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Advisor">
+              <PropertyRef Name="advisorID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="advisorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClassSchool">
+          <End Role="School" Type="Self.School" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Class" Type="Self.Class" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="School">
+              <PropertyRef Name="schoolID" />
+            </Principal>
+            <Dependent Role="Class">
+              <PropertyRef Name="schoolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ScheduleClass">
+          <End Role="Class" Type="Self.Class" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class">
+              <PropertyRef Name="classID" />
+            </Principal>
+            <Dependent Role="Schedule">
+              <PropertyRef Name="classID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentCollegeStatus">
+          <End Role="CollegeStatus" Type="Self.CollegeStatu" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="StudentCollege" Type="Self.StudentCollege" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CollegeStatus">
+              <PropertyRef Name="collegeStatusID" />
+            </Principal>
+            <Dependent Role="StudentCollege">
+              <PropertyRef Name="collegeStatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CStudent">
+          <End Role="Student" Type="Self.Student" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Contact" Type="Self.Contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="studentID" />
+            </Principal>
+            <Dependent Role="Contact">
+              <PropertyRef Name="studentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CRCStudent">
+          <End Role="Student" Type="Self.Student" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CreditRecoveryClass" Type="Self.CreditRecoveryClass" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="studentID" />
+            </Principal>
+            <Dependent Role="CreditRecoveryClass">
+              <PropertyRef Name="studentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NoteStudent">
+          <End Role="Student" Type="Self.Student" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Note" Type="Self.Note" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="studentID" />
+            </Principal>
+            <Dependent Role="Note">
+              <PropertyRef Name="studentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PEStudent">
+          <End Role="Student" Type="Self.Student" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PersonEmployer" Type="Self.PersonEmployer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="studentID" />
+            </Principal>
+            <Dependent Role="PersonEmployer">
+              <PropertyRef Name="studentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentRace">
+          <End Role="Race" Type="Self.Race" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Race">
+              <PropertyRef Name="raceID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="raceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RCStudent">
+          <End Role="Student" Type="Self.Student" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="RigorClass" Type="Self.RigorClass" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="studentID" />
+            </Principal>
+            <Dependent Role="RigorClass">
+              <PropertyRef Name="studentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ScheduleTerm">
+          <End Role="Term" Type="Self.Term" Multiplicity="1" />
+          <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Term">
+              <PropertyRef Name="termID" />
+            </Principal>
+            <Dependent Role="Schedule">
+              <PropertyRef Name="termID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SSScholarship">
+          <End Role="Scholarship" Type="Self.Scholarship" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="StudentScholarship" Type="Self.StudentScholarship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Scholarship">
+              <PropertyRef Name="scholarshipID" />
+            </Principal>
+            <Dependent Role="StudentScholarship">
+              <PropertyRef Name="scholarshipID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Studentcollege">
+          <End Role="School" Type="Self.School" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="StudentCollege" Type="Self.StudentCollege" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="School">
+              <PropertyRef Name="schoolID" />
+            </Principal>
+            <Dependent Role="StudentCollege">
+              <PropertyRef Name="schoolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentSchool1">
+          <End Role="School" Type="Self.School" Multiplicity="1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="School">
+              <PropertyRef Name="schoolID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="schoolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SPStudent">
+          <End Role="Student" Type="Self.Student" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="SeniorPaperwork" Type="Self.SeniorPaperwork" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="studentID" />
+            </Principal>
+            <Dependent Role="SeniorPaperwork">
+              <PropertyRef Name="studentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SSStudent">
+          <End Role="Student" Type="Self.Student" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="StudentScholarship" Type="Self.StudentScholarship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="studentID" />
+            </Principal>
+            <Dependent Role="StudentScholarship">
+              <PropertyRef Name="studentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentCollegeStudent">
+          <End Role="Student" Type="Self.Student" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="StudentCollege" Type="Self.StudentCollege" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="studentID" />
+            </Principal>
+            <Dependent Role="StudentCollege">
+              <PropertyRef Name="studentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SurveyStudent">
+          <End Role="Student" Type="Self.Student" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Survey" Type="Self.Survey" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="studentID" />
+            </Principal>
+            <Dependent Role="Survey">
+              <PropertyRef Name="studentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TermStudent">
+          <End Role="Student" Type="Self.Student" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Term" Type="Self.Term" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="studentID" />
+            </Principal>
+            <Dependent Role="Term">
+              <PropertyRef Name="studentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GearUpDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ACTScores" EntityType="Self.ACTScore" />
+          <EntitySet Name="Advisors" EntityType="Self.Advisor" />
+          <EntitySet Name="Classes" EntityType="Self.Class" />
+          <EntitySet Name="CollegeStatus" EntityType="Self.CollegeStatu" />
+          <EntitySet Name="Contacts" EntityType="Self.Contact" />
+          <EntitySet Name="CreditRecoveryClasses" EntityType="Self.CreditRecoveryClass" />
+          <EntitySet Name="Employers" EntityType="Self.Employer" />
+          <EntitySet Name="Notes" EntityType="Self.Note" />
+          <EntitySet Name="ParentServiceCodes" EntityType="Self.ParentServiceCode" />
+          <EntitySet Name="PersonEmployers" EntityType="Self.PersonEmployer" />
+          <EntitySet Name="Races" EntityType="Self.Race" />
+          <EntitySet Name="RigorClasses" EntityType="Self.RigorClass" />
+          <EntitySet Name="Schedules" EntityType="Self.Schedule" />
+          <EntitySet Name="Scholarships" EntityType="Self.Scholarship" />
+          <EntitySet Name="Schools" EntityType="Self.School" />
+          <EntitySet Name="SeniorPaperworks" EntityType="Self.SeniorPaperwork" />
+          <EntitySet Name="Services" EntityType="Self.Service" />
+          <EntitySet Name="ServiceCodes" EntityType="Self.ServiceCode" />
+          <EntitySet Name="ServiceMethods" EntityType="Self.ServiceMethod" />
+          <EntitySet Name="Students" EntityType="Self.Student" />
+          <EntitySet Name="StudentColleges" EntityType="Self.StudentCollege" />
+          <EntitySet Name="StudentScholarships" EntityType="Self.StudentScholarship" />
+          <EntitySet Name="Surveys" EntityType="Self.Survey" />
+          <EntitySet Name="Terms" EntityType="Self.Term" />
+          <AssociationSet Name="FK_ACTStudent" Association="Self.FK_ACTStudent">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="ACTScore" EntitySet="ACTScores" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentAdvisor" Association="Self.FK_StudentAdvisor">
+            <End Role="Advisor" EntitySet="Advisors" />
+            <End Role="Student" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClassSchool" Association="Self.FK_ClassSchool">
+            <End Role="School" EntitySet="Schools" />
+            <End Role="Class" EntitySet="Classes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ScheduleClass" Association="Self.FK_ScheduleClass">
+            <End Role="Class" EntitySet="Classes" />
+            <End Role="Schedule" EntitySet="Schedules" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentCollegeStatus" Association="Self.FK_StudentCollegeStatus">
+            <End Role="CollegeStatus" EntitySet="CollegeStatus" />
+            <End Role="StudentCollege" EntitySet="StudentColleges" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CStudent" Association="Self.FK_CStudent">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="Contact" EntitySet="Contacts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CRCStudent" Association="Self.FK_CRCStudent">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="CreditRecoveryClass" EntitySet="CreditRecoveryClasses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NoteStudent" Association="Self.FK_NoteStudent">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="Note" EntitySet="Notes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PEStudent" Association="Self.FK_PEStudent">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="PersonEmployer" EntitySet="PersonEmployers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentRace" Association="Self.FK_StudentRace">
+            <End Role="Race" EntitySet="Races" />
+            <End Role="Student" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RCStudent" Association="Self.FK_RCStudent">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="RigorClass" EntitySet="RigorClasses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ScheduleTerm" Association="Self.FK_ScheduleTerm">
+            <End Role="Term" EntitySet="Terms" />
+            <End Role="Schedule" EntitySet="Schedules" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SSScholarship" Association="Self.FK_SSScholarship">
+            <End Role="Scholarship" EntitySet="Scholarships" />
+            <End Role="StudentScholarship" EntitySet="StudentScholarships" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Studentcollege" Association="Self.FK_Studentcollege">
+            <End Role="School" EntitySet="Schools" />
+            <End Role="StudentCollege" EntitySet="StudentColleges" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentSchool1" Association="Self.FK_StudentSchool1">
+            <End Role="School" EntitySet="Schools" />
+            <End Role="Student" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SPStudent" Association="Self.FK_SPStudent">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="SeniorPaperwork" EntitySet="SeniorPaperworks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SSStudent" Association="Self.FK_SSStudent">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="StudentScholarship" EntitySet="StudentScholarships" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentCollegeStudent" Association="Self.FK_StudentCollegeStudent">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="StudentCollege" EntitySet="StudentColleges" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SurveyStudent" Association="Self.FK_SurveyStudent">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="Survey" EntitySet="Surveys" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TermStudent" Association="Self.FK_TermStudent">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="Term" EntitySet="Terms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CAdvisor" Association="GearUpDBModel.FK_CAdvisor">
+            <End Role="Advisor" EntitySet="Advisors" />
+            <End Role="Contact" EntitySet="Contacts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CParentService" Association="GearUpDBModel.FK_CParentService">
+            <End Role="ParentServiceCode" EntitySet="ParentServiceCodes" />
+            <End Role="Contact" EntitySet="Contacts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CService" Association="GearUpDBModel.FK_CService">
+            <End Role="Service" EntitySet="Services" />
+            <End Role="Contact" EntitySet="Contacts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CServiceMethod" Association="GearUpDBModel.FK_CServiceMethod">
+            <End Role="ServiceMethod" EntitySet="ServiceMethods" />
+            <End Role="Contact" EntitySet="Contacts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ServiceCode" Association="GearUpDBModel.FK_ServiceCode">
+            <End Role="ServiceCode" EntitySet="ServiceCodes" />
+            <End Role="Service" EntitySet="Services" />
+          </AssociationSet>
+        </EntityContainer>
+        <Association Name="FK_CAdvisor">
+          <End Type="GearUpDBModel.Advisor" Role="Advisor" Multiplicity="1" />
+          <End Type="GearUpDBModel.Contact" Role="Contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Advisor">
+              <PropertyRef Name="advisorID" />
+            </Principal>
+            <Dependent Role="Contact">
+              <PropertyRef Name="advisorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CParentService">
+          <End Type="GearUpDBModel.ParentServiceCode" Role="ParentServiceCode" Multiplicity="0..1" />
+          <End Type="GearUpDBModel.Contact" Role="Contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ParentServiceCode">
+              <PropertyRef Name="parentServiceID" />
+            </Principal>
+            <Dependent Role="Contact">
+              <PropertyRef Name="parentServiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CService">
+          <End Type="GearUpDBModel.Service" Role="Service" Multiplicity="0..1" />
+          <End Type="GearUpDBModel.Contact" Role="Contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Service">
+              <PropertyRef Name="serviceID" />
+            </Principal>
+            <Dependent Role="Contact">
+              <PropertyRef Name="serviceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CServiceMethod">
+          <End Type="GearUpDBModel.ServiceMethod" Role="ServiceMethod" Multiplicity="1" />
+          <End Type="GearUpDBModel.Contact" Role="Contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceMethod">
+              <PropertyRef Name="serviceMethodID" />
+            </Principal>
+            <Dependent Role="Contact">
+              <PropertyRef Name="serviceMethodID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ServiceCode">
+          <End Type="GearUpDBModel.ServiceCode" Role="ServiceCode" Multiplicity="1" />
+          <End Type="GearUpDBModel.Service" Role="Service" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceCode">
+              <PropertyRef Name="serviceCodeID" />
+            </Principal>
+            <Dependent Role="Service">
+              <PropertyRef Name="serviceCodeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GearUpDBModelStoreContainer" CdmEntityContainer="GearUpDBEntities">
+          <EntitySetMapping Name="ACTScores">
+            <EntityTypeMapping TypeName="GearUpDBModel.ACTScore">
+              <MappingFragment StoreEntitySet="ACTScore">
+                <ScalarProperty Name="actID" ColumnName="actID" />
+                <ScalarProperty Name="studentID" ColumnName="studentID" />
+                <ScalarProperty Name="attmepted" ColumnName="attmepted" />
+                <ScalarProperty Name="dateAttempted" ColumnName="dateAttempted" />
+                <ScalarProperty Name="compositeScore" ColumnName="compositeScore" />
+                <ScalarProperty Name="englishScore" ColumnName="englishScore" />
+                <ScalarProperty Name="mathScore" ColumnName="mathScore" />
+                <ScalarProperty Name="readingScore" ColumnName="readingScore" />
+                <ScalarProperty Name="scienceScore" ColumnName="scienceScore" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Advisors">
+            <EntityTypeMapping TypeName="GearUpDBModel.Advisor">
+              <MappingFragment StoreEntitySet="Advisor">
+                <ScalarProperty Name="advisorID" ColumnName="advisorID" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="AspNetUserID" ColumnName="AspNetUserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Classes">
+            <EntityTypeMapping TypeName="GearUpDBModel.Class">
+              <MappingFragment StoreEntitySet="Class">
+                <ScalarProperty Name="classID" ColumnName="classID" />
+                <ScalarProperty Name="schoolID" ColumnName="schoolID" />
+                <ScalarProperty Name="teacherName" ColumnName="teacherName" />
+                <ScalarProperty Name="className" ColumnName="className" />
+                <ScalarProperty Name="rigorCode" ColumnName="rigorCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CollegeStatus">
+            <EntityTypeMapping TypeName="GearUpDBModel.CollegeStatu">
+              <MappingFragment StoreEntitySet="CollegeStatus">
+                <ScalarProperty Name="collegeStatusID" ColumnName="collegeStatusID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contacts">
+            <EntityTypeMapping TypeName="GearUpDBModel.Contact">
+              <MappingFragment StoreEntitySet="Contact">
+                <ScalarProperty Name="contactID" ColumnName="contactID" />
+                <ScalarProperty Name="studentID" ColumnName="studentID" />
+                <ScalarProperty Name="advisorID" ColumnName="advisorID" />
+                <ScalarProperty Name="schoolID" ColumnName="schoolID" />
+                <ScalarProperty Name="serviceMethodID" ColumnName="serviceMethodID" />
+                <ScalarProperty Name="serviceID" ColumnName="serviceID" />
+                <ScalarProperty Name="parentServiceID" ColumnName="parentServiceID" />
+                <ScalarProperty Name="serviceDate" ColumnName="serviceDate" />
+                <ScalarProperty Name="serviceMinutes" ColumnName="serviceMinutes" />
+                <ScalarProperty Name="parentName" ColumnName="parentName" />
+                <ScalarProperty Name="details" ColumnName="details" />
+                <ScalarProperty Name="parentOnly" ColumnName="parentOnly" />
+                <ScalarProperty Name="serviceIneligible" ColumnName="serviceIneligible" />
+                <ScalarProperty Name="compass" ColumnName="compass" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CreditRecoveryClasses">
+            <EntityTypeMapping TypeName="GearUpDBModel.CreditRecoveryClass">
+              <MappingFragment StoreEntitySet="CreditRecoveryClass">
+                <ScalarProperty Name="CreditRecovertyClassID" ColumnName="CreditRecovertyClassID" />
+                <ScalarProperty Name="studentID" ColumnName="studentID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employers">
+            <EntityTypeMapping TypeName="GearUpDBModel.Employer">
+              <MappingFragment StoreEntitySet="Employer">
+                <ScalarProperty Name="employerID" ColumnName="employerID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Notes">
+            <EntityTypeMapping TypeName="GearUpDBModel.Note">
+              <MappingFragment StoreEntitySet="Note">
+                <ScalarProperty Name="noteID" ColumnName="noteID" />
+                <ScalarProperty Name="studentID" ColumnName="studentID" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="note1" ColumnName="note" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ParentServiceCodes">
+            <EntityTypeMapping TypeName="GearUpDBModel.ParentServiceCode">
+              <MappingFragment StoreEntitySet="ParentServiceCode">
+                <ScalarProperty Name="parentServiceID" ColumnName="parentServiceID" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PersonEmployers">
+            <EntityTypeMapping TypeName="GearUpDBModel.PersonEmployer">
+              <MappingFragment StoreEntitySet="PersonEmployer">
+                <ScalarProperty Name="personEmployerID" ColumnName="personEmployerID" />
+                <ScalarProperty Name="studentID" ColumnName="studentID" />
+                <ScalarProperty Name="employerID" ColumnName="employerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Races">
+            <EntityTypeMapping TypeName="GearUpDBModel.Race">
+              <MappingFragment StoreEntitySet="Race">
+                <ScalarProperty Name="raceID" ColumnName="raceID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RigorClasses">
+            <EntityTypeMapping TypeName="GearUpDBModel.RigorClass">
+              <MappingFragment StoreEntitySet="RigorClass">
+                <ScalarProperty Name="rigorClassID" ColumnName="rigorClassID" />
+                <ScalarProperty Name="studentID" ColumnName="studentID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Schedules">
+            <EntityTypeMapping TypeName="GearUpDBModel.Schedule">
+              <MappingFragment StoreEntitySet="Schedule">
+                <ScalarProperty Name="scheduleID" ColumnName="scheduleID" />
+                <ScalarProperty Name="classID" ColumnName="classID" />
+                <ScalarProperty Name="termID" ColumnName="termID" />
+                <ScalarProperty Name="period" ColumnName="period" />
+                <ScalarProperty Name="crPointsNeeded" ColumnName="crPointsNeeded" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Scholarships">
+            <EntityTypeMapping TypeName="GearUpDBModel.Scholarship">
+              <MappingFragment StoreEntitySet="Scholarship">
+                <ScalarProperty Name="scholarshipID" ColumnName="scholarshipID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Schools">
+            <EntityTypeMapping TypeName="GearUpDBModel.School">
+              <MappingFragment StoreEntitySet="School">
+                <ScalarProperty Name="schoolID" ColumnName="schoolID" />
+                <ScalarProperty Name="schoolCode" ColumnName="schoolCode" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="isCollege" ColumnName="isCollege" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SeniorPaperworks">
+            <EntityTypeMapping TypeName="GearUpDBModel.SeniorPaperwork">
+              <MappingFragment StoreEntitySet="SeniorPaperwork">
+                <ScalarProperty Name="seniorPaperworkID" ColumnName="seniorPaperworkID" />
+                <ScalarProperty Name="studentID" ColumnName="studentID" />
+                <ScalarProperty Name="ferpaReleaseComplete" ColumnName="ferpaReleaseComplete" />
+                <ScalarProperty Name="uheaaFafsaStatus" ColumnName="uheaaFafsaStatus" />
+                <ScalarProperty Name="fafsaVerification" ColumnName="fafsaVerification" />
+                <ScalarProperty Name="pellGrantAmount" ColumnName="pellGrantAmount" />
+                <ScalarProperty Name="collegeStateDate" ColumnName="collegeStateDate" />
+                <ScalarProperty Name="collegeID" ColumnName="collegeID" />
+                <ScalarProperty Name="exitStatus1" ColumnName="exitStatus1" />
+                <ScalarProperty Name="exitStatus2" ColumnName="exitStatus2" />
+                <ScalarProperty Name="exitStatus3" ColumnName="exitStatus3" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Services">
+            <EntityTypeMapping TypeName="GearUpDBModel.Service">
+              <MappingFragment StoreEntitySet="Service">
+                <ScalarProperty Name="serviceID" ColumnName="serviceID" />
+                <ScalarProperty Name="serviceCodeID" ColumnName="serviceCodeID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServiceCodes">
+            <EntityTypeMapping TypeName="GearUpDBModel.ServiceCode">
+              <MappingFragment StoreEntitySet="ServiceCode">
+                <ScalarProperty Name="serviceCodeID" ColumnName="serviceCodeID" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServiceMethods">
+            <EntityTypeMapping TypeName="GearUpDBModel.ServiceMethod">
+              <MappingFragment StoreEntitySet="ServiceMethod">
+                <ScalarProperty Name="serviceMethodID" ColumnName="serviceMethodID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Students">
+            <EntityTypeMapping TypeName="GearUpDBModel.Student">
+              <MappingFragment StoreEntitySet="Student">
+                <ScalarProperty Name="studentID" ColumnName="studentID" />
+                <ScalarProperty Name="schoolID" ColumnName="schoolID" />
+                <ScalarProperty Name="raceID" ColumnName="raceID" />
+                <ScalarProperty Name="advisorID" ColumnName="advisorID" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="startDate" ColumnName="startDate" />
+                <ScalarProperty Name="classOf" ColumnName="classOf" />
+                <ScalarProperty Name="hispanic" ColumnName="hispanic" />
+                <ScalarProperty Name="iep" ColumnName="iep" />
+                <ScalarProperty Name="lep" ColumnName="lep" />
+                <ScalarProperty Name="hasSiblings" ColumnName="hasSiblings" />
+                <ScalarProperty Name="siblingNames" ColumnName="siblingNames" />
+                <ScalarProperty Name="collegeGreenLight" ColumnName="collegeGreenLight" />
+                <ScalarProperty Name="lifePlanStatus" ColumnName="lifePlanStatus" />
+                <ScalarProperty Name="careerGoal1" ColumnName="careerGoal1" />
+                <ScalarProperty Name="careerGoal2" ColumnName="careerGoal2" />
+                <ScalarProperty Name="mathLevel" ColumnName="mathLevel" />
+                <ScalarProperty Name="parentsPreferredLanguage" ColumnName="parentsPreferredLanguage" />
+                <ScalarProperty Name="undocumented" ColumnName="undocumented" />
+                <ScalarProperty Name="compassStudentID" ColumnName="compassStudentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentColleges">
+            <EntityTypeMapping TypeName="GearUpDBModel.StudentCollege">
+              <MappingFragment StoreEntitySet="StudentCollege">
+                <ScalarProperty Name="studentCollegeID" ColumnName="studentCollegeID" />
+                <ScalarProperty Name="studentID" ColumnName="studentID" />
+                <ScalarProperty Name="schoolID" ColumnName="schoolID" />
+                <ScalarProperty Name="preferenceOrder" ColumnName="preferenceOrder" />
+                <ScalarProperty Name="collegeStatusID" ColumnName="collegeStatusID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentScholarships">
+            <EntityTypeMapping TypeName="GearUpDBModel.StudentScholarship">
+              <MappingFragment StoreEntitySet="StudentScholarship">
+                <ScalarProperty Name="studentScholarshipID" ColumnName="studentScholarshipID" />
+                <ScalarProperty Name="studentID" ColumnName="studentID" />
+                <ScalarProperty Name="scholarshipID" ColumnName="scholarshipID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Surveys">
+            <EntityTypeMapping TypeName="GearUpDBModel.Survey">
+              <MappingFragment StoreEntitySet="Survey">
+                <ScalarProperty Name="surveyID" ColumnName="surveyID" />
+                <ScalarProperty Name="studentID" ColumnName="studentID" />
+                <ScalarProperty Name="studentCompleted" ColumnName="studentCompleted" />
+                <ScalarProperty Name="parentCompleted" ColumnName="parentCompleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Terms">
+            <EntityTypeMapping TypeName="GearUpDBModel.Term">
+              <MappingFragment StoreEntitySet="Term">
+                <ScalarProperty Name="termID" ColumnName="termID" />
+                <ScalarProperty Name="studentID" ColumnName="studentID" />
+                <ScalarProperty Name="year" ColumnName="year" />
+                <ScalarProperty Name="term1" ColumnName="term" />
+                <ScalarProperty Name="absences" ColumnName="absences" />
+                <ScalarProperty Name="gpaPoints" ColumnName="gpaPoints" />
+                <ScalarProperty Name="gpaHours" ColumnName="gpaHours" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

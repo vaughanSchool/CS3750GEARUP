@@ -1,0 +1,120 @@
+﻿@using Microsoft.AspNet.Identity
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - GEAR UP</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/jquery-ui-1.10.4.custom.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/jquery-ui-1.10.4.custom.min.js"></script>
+
+</head>
+<body>
+<style type="text/css">
+    div {
+        z-index: 1;
+    }
+</style>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#txtSearch").autocomplete({
+            source: '@Url.Action("GetStudents", "Home")', 
+            minLength: 1
+        });
+    });
+</script>
+
+<nav class="navbar navbar-inverse navbar-fixed-top" style="z-index:2">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand">GEAR UP</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+                <li class="img-responsive" style="padding-top:5px"><img src="~/Content/Images/GearWhiteSmlr.png" alt="Small Logo" /></li>
+                <li class="btn-link" style="padding-left:2em"><a href="~/Home/Index">Dashboard</a></li>
+                <li class="dropdown"  style="padding-left:1em">
+                    <button class="btn btn-info dropdown-toggle btn-sm" type="button" data-toggle="dropdown">
+                        Menu
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-right small">
+                        <li><a href="~/Home/Index">Dashboard</a></li>
+                        <li><a href="~/Advising/Index">Advising</a></li>
+                        <li><a href="~/Reports/Index">Reports</a></li>
+                        <li><a href="~/ContactLog/Index">Contact Logs</a></li>
+                    </ul>
+                </li>
+                <li class="navbar-form" role="search" style="z-index:1;height:40px">
+                    @using (@Html.BeginForm("Search", "Home", new { @class = "navbar-form" }))
+                    {
+                        
+                        @Html.TextBox("searchTerm", null, new { id = "txtSearch", @class = "form-control input-sm", placeholder = "Search Student"})
+                        <input type="submit" value="Search" class="btn btn-info btn-sm" />
+                        
+                    }﻿
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <button class="btn btn-info dropdown-toggle btn-sm" type="button" data-toggle="dropdown">
+                        Location
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-right small">
+                        @*@Html.DropDownList("Schools")*@
+                        <li><a href="#">Box Elder</a></li>
+                        <li><a href="#">Davis</a></li>
+                        <li><a href="#">Morgan</a></li>
+                        <li><a href="#">Weber</a></li>
+                    </ul>
+                </li>     
+                <li class="dropdown" style="padding-right:2em">
+                    <button class="btn btn-info dropdown-toggle btn-sm" type="button" data-toggle="dropdown" aria-label="Left Align">
+                        <span class="glyphicon glyphicon-cog"></span> Settings
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-right small">
+                        <li><a href="~/Manage/Index">Preferences</a></li>
+                        <li>
+                            @Html.ActionLink("Admin", "Index", "Admin")
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            @if (Request.IsAuthenticated)
+                            {
+                                using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                                {
+                                    @Html.AntiForgeryToken()
+                                <div id="logOff"><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></div>
+                                }
+                            }
+                        </li>
+                    </ul> 
+                </li>
+            </ul>    
+        </div>
+    </div>
+</nav>
+<div class="container body-content">
+    @RenderBody()
+    <hr />
+    <footer>
+        <p>&copy; @DateTime.Now.Year - GEAR UP</p>
+    </footer>
+</div>
+
+    @*@Scripts.Render("~/bundles/jquery")*@
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
