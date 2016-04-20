@@ -1,40 +1,66 @@
 ﻿@model IEnumerable<GearUp.Models.Student>
-
 @{
-    ViewBag.Title = "LifePlan Edit";
+    ViewBag.Title = "LifePlan Edit";        
 }
 
-@*<link href="~/Content/jquery-ui-1.10.4.custom.min.css" rel="stylesheet" />
-<script src="~/Scripts/jquery-1.10.2.js"></script>
-<script src="~/Scripts/jquery-ui-1.10.4.custom.min.js"></script>
-*@
+@* This is where the styling for this page is located. Look in Content folder for lifeplan-edit.css *@
+<link href="~/Content/lifeplan-edit.css" rel="stylesheet" />
 
-<div style="font-family: Arial">
-<br />
-    @using (@Html.BeginForm())
-    {
-        <b>Student Name: </b>
-        @Html.TextBox("searchTerm", null, new { id = "txtStudentSearch"})
-        <input type="submit" value="Search" />
-    }﻿
-<br />
+@* This is the container wrapped around our whole edit area *@
+<div class="container">
+
+    @* Start of the Top Section (Search Bar and Advisor drop down) *@
+    <div id="top-section" class="row">
+        <div class="col-md-6">
+            @using (@Html.BeginForm())
+            {
+                <b>Student Name: </b>
+                @Html.TextBox("searchTerm", null, new { id = "txtStudentSearch", @class = "form-control" })
+                <input class="btn btn-primary" type="submit" value="Search" />
+            }﻿
+        </div>
+        <div class="col-md-6">
+            Advisor Drop Down Goes Here...
+        </div>
+    </div>
+    @* End of top section*@   
+     
+    <div class="row">
+
+        @* Start of the Left Section (All of the input boxes, buttons, etc...) *@
+        <div id="left-section" class="col-md-4">
+            <div>
+                Academic Needs Stuff Goes Here...
+            </div>
+            <div>
+                Educational Goals Stuff Goes Here...
+            </div>
+            <div>
+                Career Goals Stuff Goes Here...
+            </div>
+            <div>
+                <button class="btn btn-default">Cancel</button>
+                <butoon class="btn btn-primary">Submit</butoon>
+            </div>
+        </div>
+        @* End of left section *@
+
+        @* Start of the right section (Where the boxes to display info are located) *@
+        <div id="right-section" class="col-md-8">
+            <div>
+                Academic Needs Stuff Goes Here...
+            </div>
+            <div>
+                Educational Goals Stuff Goes Here...
+            </div>
+            <div>
+                Career Goals Stuff Goes Here...
+            </div>            
+        </div>
+        @* End of right section *@
+
+    </div>
+
+
 </div>
-
-<div>
-    @foreach (var item in Model)
-    {
-        <p>
-            @Html.DisplayFor(modelItem => item.firstName)
-        </p>
-    }
-
-</div>
-
-<script type="text/javascript">
-    $(document).ready(function () {
-        $("#txtStudentSearch").autocomplete({
-            source: '@Url.Action("GetStudents")',
-            minLength: 1
-        });
-    });
-</script>
+@* End of container *@

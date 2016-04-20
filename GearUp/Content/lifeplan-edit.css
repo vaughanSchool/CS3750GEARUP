@@ -1,0 +1,13 @@
+﻿﻿#top-section {
+    padding-top: 24px;
+    border-bottom: 1px solid black;
+}
+
+#left-section{
+     border-right: 1px solid black;
+     padding-top: 16px;
+}
+
+#right-section{
+    padding-top: 16px;
+}
