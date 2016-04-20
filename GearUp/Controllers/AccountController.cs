@@ -57,10 +57,6 @@ namespace GearUp.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
-            if(UserManager.Users.ToList().Count == 0)
-            {
-                return View("BeginningOfTime");
-            }
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
@@ -140,7 +136,7 @@ namespace GearUp.Controllers
 
         //
         // GET: /Account/Register
-        
+        [AllowAnonymous]
         public ActionResult Register()
         {
             return View();

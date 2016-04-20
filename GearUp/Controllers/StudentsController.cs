@@ -58,11 +58,12 @@ namespace GearUp.Controllers
             {
                 db.Students.Add(student);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("../Students/Details/" + student.studentID);
             }
 
             ViewBag.raceID = new SelectList(db.Races, "raceID", "name", student.raceID);
             ViewBag.schoolID = new SelectList(db.Schools, "schoolID", "schoolCode", student.schoolID);
+
             return View(student);
         }
 

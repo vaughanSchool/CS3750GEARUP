@@ -52,7 +52,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="inputMinutes">Minutes: <span class="glyphicon-asterisk"></span></label>
+                        <label for="inputMinutes">Minutes: </label>
                         @Html.TextBoxFor(m => m.serviceMinutes, new { @class = "form-control input-sm", type = "number", min = "0"})
                     </div>
 
@@ -80,8 +80,8 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="parentOnly">Parent Only?: </label>
-                        @Html.CheckBoxFor(m => m.parentOnly)
+                        <label for="parentOnly">Parent Only?: <span class="glyphicon-asterisk"></span></label>
+                        @Html.CheckBoxFor(m => m.parentOnly, new { @class = "checkbox-inline" })
                     </div>
 
                     <div class="form-group">
@@ -93,12 +93,12 @@
                     </div>
                     <div class="form-group">
                         <label for="serviceIneligible">Service Ineligible?: <span class="glyphicon-asterisk"></span></label>
-                        @Html.CheckBoxFor(m => m.serviceIneligible)
+                        @Html.CheckBoxFor(m => m.serviceIneligible, new { @class = "checkbox-inline" })
                     </div>
 
                     <div class="form-group">
                         <label for="compass">Compass?: <span class="glyphicon-asterisk"></span></label>
-                        @Html.CheckBoxFor(m => m.compass)
+                        @Html.CheckBoxFor(m => m.compass, new { @class = "checkbox-inline" })
                     </div>
                 </div>
             </div>

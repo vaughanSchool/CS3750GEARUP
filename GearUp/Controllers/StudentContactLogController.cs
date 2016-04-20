@@ -52,7 +52,7 @@ namespace GearUp.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public ActionResult Create([Bind(Include = "studentID,serviceID,serviceDate,serviceMinutes,parentName,serviceMethodID,AdvisorID,schoolID,parentServiceID,contactNotes,parentOnly,serviceIneligible,compass")] Contact contact, string serviceCode)
+        public ActionResult Create([Bind(Include = "studentID,serviceID,serviceDate,serviceMinutes,parentName,serviceMethodID,AspNetUser,schoolID,parentServiceID,contactNotes")] Contact contact, string serviceCode)
         {
             if (ModelState.IsValid)
             {

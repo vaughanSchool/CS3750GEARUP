@@ -12,14 +12,6 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.aspNetUserId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.aspNetUserId)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.firstName)
         </dt>
 
@@ -92,6 +84,14 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.siblingNames)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.siblingNames)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.collegeGreenLight)
         </dt>
 
@@ -100,11 +100,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.lifePlaneStatus)
+            @Html.DisplayNameFor(model => model.lifePlanStatus)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.lifePlaneStatus)
+            @Html.DisplayFor(model => model.lifePlanStatus)
         </dd>
 
         <dt>
@@ -153,6 +153,14 @@
 
         <dd>
             @Html.DisplayFor(model => model.compassStudentID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Advisor.code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Advisor.code)
         </dd>
 
         <dt>

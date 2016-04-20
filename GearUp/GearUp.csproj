@@ -500,7 +500,6 @@
     <Content Include="Views\Home\Search.cshtml" />
     <Content Include="Views\LifePlan\Index.cshtml" />
     <Content Include="Views\LifePlan\Edit.cshtml" />
-    <Content Include="Views\Account\BeginningOfTime.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
