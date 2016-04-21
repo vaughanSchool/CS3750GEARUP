@@ -53,5 +53,12 @@ namespace GearUp.Controllers
 
             return Json(students, JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult Print()
+        {
+            ViewBag.Message = "Print";
+
+            return View();
+        }
     }
 }
