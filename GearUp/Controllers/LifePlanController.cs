@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using GearUp.Models;
@@ -13,6 +13,7 @@ namespace GearUp.Controllers
         List<string> education = new List<string>();
         List<string> careerInputBox = new List<string>();
         List<string> careerDropDown = new List<string>();
+        //List<string> studentAdvisor = new List<string>();
 
         public ActionResult Index()
         {
@@ -31,6 +32,7 @@ namespace GearUp.Controllers
             ViewBag.Education = education;
             ViewBag.CareerName = careerInputBox;
             ViewBag.CareerCategory = careerDropDown;
+           // ViewBag.StudentAdvisor = studentAdvisor;
 
             return View(db.Students);
         }
@@ -44,6 +46,8 @@ namespace GearUp.Controllers
         {
             GearUpDBEntities db = new GearUpDBEntities();
             List<Student> students = null;
+            //List<Advisor> advisor = null;
+
             if (string.IsNullOrEmpty(searchTerm))
             {
                 //Do Nothing
@@ -53,9 +57,17 @@ namespace GearUp.Controllers
                 students = db.Students
                     .Where(s => s.firstName.StartsWith(searchTerm) || s.lastName.StartsWith(searchTerm)
                     || s.firstName + " " + s.lastName == searchTerm).ToList();
+                /*
+                advisor = db.Advisors
+                   .Where(s => s.advisorID.Equals(students[0].advisorID)).ToList();
+
+                studentAdvisor[0] = advisor[0].firstName + " " + advisor[0].lastName;
+            */
             }
 
-            //need to check if there is only a single student left
+            //Need to check if student exsists
+
+
 
             //update the right side of the form
             //once we have db working then make calls to get this information
@@ -81,7 +93,7 @@ namespace GearUp.Controllers
             ViewBag.Education = education;
             ViewBag.CareerName = careerInputBox;
             ViewBag.CareerCategory = careerDropDown;
-
+            //ViewBag.StudentAdvisor = studentAdvisor;
 
             return View(students);
         }
@@ -95,6 +107,15 @@ namespace GearUp.Controllers
             return Json(students, JsonRequestBehavior.AllowGet);
         }
 
+        public JsonResult GetAdvisors(string term)
+        {
+            GearUpDBEntities db = new GearUpDBEntities();
+            List<string> advisors = db.Advisors.Where(s => s.firstName.StartsWith(term) || s.lastName.StartsWith(term))
+                .Select(x => x.firstName + " " + x.lastName).ToList();
+
+            return Json(advisors, JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult Print()
         {
             ViewBag.Message = "Print";
@@ -103,3 +124,4 @@ namespace GearUp.Controllers
         }
     }
 }
+
