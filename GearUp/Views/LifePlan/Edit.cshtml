@@ -30,13 +30,71 @@
         @* Start of the Left Section (All of the input boxes, buttons, etc...) *@
         <div id="left-section" class="col-md-4">
             <div>
-                Academic Needs Stuff Goes Here...
+                
+                @using (@Html.BeginForm())
+                {
+
+                    @Html.Label("Academic Needs:") <br />
+                    @Html.TextBox("AcademicNeeds")
+                    <button type="submit">Enter</button>
+                    <button type="reset">Clear</button>
+                }             
+                
+
             </div>
-            <div>
-                Educational Goals Stuff Goes Here...
+            <div id="educational-goals">
+                @using (@Html.BeginForm())
+                {
+
+                    @Html.Label("Educational Goals:") <br />
+                    @Html.TextBox("EducationalGoals")
+                    <button type="submit">Enter</button>
+                    <button type="reset">Clear</button>
+                }
             </div>
-            <div>
-                Career Goals Stuff Goes Here...
+            <div id="career-goals">
+                @using (@Html.BeginForm())
+                {
+
+                    @Html.Label("Career Goals:") <br />
+                    @Html.TextBox("CareerGoals")
+                    
+                        
+                            <select id="CategoryType" name="CategoryType">
+                                <option value=""></option>
+                                <option selected="selected" value="0">Animal Science</option>
+                                <option value="1">Auto/Aircraft Mechanics</option>
+                                <option value="2">Business</option>
+                                <option value="3">Communications</option>
+                                <option value="4">Computers</option>
+                                <option value="5">Construction</option>
+                                <option value="6">Cosmetology</option>
+                                <option value="7">Criminal Justice</option>
+                                <option value="8">Culinary</option>
+                                <option value="9">Education</option>
+                                <option value="10">Engineering</option>
+                                <option value="11">Entertainment</option>
+                                <option value="12">Entrepreneurship</option>
+                                <option value="13">Humanities</option>
+                                <option value="14">Interior Design</option>
+                                <option value="15">Medical/Dental</option>
+                                <option value="16">Military</option>
+                                <option value="17">Social Work/Psychology</option>
+                                <option value="18">Visual/Performing Arts</option>
+                                <option value="19">Other</option>
+                            </select>
+                        
+                           
+                        
+                        <div id="buttons">
+                            <button type="submit">Enter</button><br />
+                            <div id="clear">
+                                <button type="reset">Clear</button>
+                            </div>
+                        </div>
+                            
+
+                }
             </div>
             <div>
                 <button class="btn btn-default">Cancel</button>

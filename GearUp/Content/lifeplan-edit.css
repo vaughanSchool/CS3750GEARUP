@@ -5,9 +5,29 @@
 
 #left-section{
      border-right: 1px solid black;
-     padding-top: 16px;
+     padding-top: 16px;     
 }
 
 #right-section{
     padding-top: 16px;
+}
+
+#buttons{
+    padding-left: 302px;
+    padding-top: 3px;
+}
+
+#clear{
+    padding-top: 3px;
+}
+
+
+
+#career-goals{
+    padding-top: 100px;
+    padding-bottom: 20px;
+}
+
+#educational-goals{
+    padding-top: 100px;
 }
