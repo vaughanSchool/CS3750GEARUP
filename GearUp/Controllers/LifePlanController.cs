@@ -23,6 +23,8 @@ namespace GearUp.Controllers
             return View(db.Students);
         }
 
+              
+
         //This post will be used when the student is selected
         //and all information for their lifeplan is grabbed.
         [HttpPost]
