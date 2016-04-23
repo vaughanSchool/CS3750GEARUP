@@ -1,4 +1,4 @@
-﻿@model IEnumerable<GearUp.Models.Student>
+@model IEnumerable<GearUp.Models.Student>
 @{
     ViewBag.Title = "LifePlan Edit";        
 }
@@ -8,23 +8,25 @@
 
 @* This is the container wrapped around our whole edit area *@
 <div class="container">
-
+    <br />
     @* Start of the Top Section (Search Bar and Advisor drop down) *@
     <div id="top-section" class="row">
         <div class="col-md-6">
             @using (@Html.BeginForm())
             {
                 <b>Student Name: </b>
-                @Html.TextBox("searchTerm", null, new { id = "txtStudentSearch", @class = "form-control" })
+                @Html.TextBox("searchTerm", null, new { id = "txtStudentSearch" })
                 <input class="btn btn-primary" type="submit" value="Search" />
             }﻿
         </div>
         <div class="col-md-6">
-            Advisor Drop Down Goes Here...
+            <b>Advisor: </b>
+            @Html.TextBox("searchTerms", null, new { id = "txtAdvisorSearch" })
+
         </div>
     </div>
     @* End of top section*@   
-     
+    <hr /> 
     <div class="row">
 
         @* Start of the Left Section (All of the input boxes, buttons, etc...) *@
@@ -166,4 +168,25 @@
 
     </div>
 </div>
+
+@*Script used for dropdown text boxes, should probably be moved to a
+    global use location*@
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#txtStudentSearch").autocomplete({
+            source: '@Url.Action("GetStudents")',
+            minLength: 1
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#txtAdvisorSearch").autocomplete({
+            source: '@Url.Action("GetAdvisors")',
+            minLength: 1
+        });
+    });
+</script>
+
 @* End of container *@
