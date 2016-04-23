@@ -1,0 +1,97 @@
+﻿@*@model GearUp.Models.LifePlan*@ <!--These will need to be added in order to get the Model information to fill out the form once the database is connected-->
+@*@model GearUp.Models.Contact*@
+@using Microsoft.AspNet.Identity
+
+@{
+    ViewBag.Title = "Print";
+    //var rowCounter = 0;
+}
+
+@* This is where the styling for this page is located. Look in Content folder for lifeplan-edit.css *@
+<link href="~/Content/lifeplan-edit.css" rel="stylesheet" />
+
+<style type="text/css">
+    table {
+        border: 1px solid black;
+        border-collapse: collapse;
+        text-align: left;
+    }
+
+    #col-1 {
+        padding-left: 10px;
+    }
+
+    #col-2 {
+        padding-left: 5px;
+        word-wrap: break-word;    }
+
+</style>
+
+
+
+<h2>Student Life Plan</h2>
+
+
+
+<table style="width:100%" border="1" id="table">
+    <thead>
+        <tr>
+            <td id="col-1">Student Name:</td>
+            <td colspan="2" id="col-1">
+                @*@Model.Student.firstName + " " +
+                @Model.Student.lastName*@
+            </td>
+        </tr>
+        <tr>
+            <td id="col-1">School:</td>
+            <td colspan="2" id="col-1">
+                @*@Model.School.name*@
+            </td>
+        </tr>
+        <tr>
+            <td id="col-1">Advisor:</td>
+            <td colspan="2" id="col-1">
+                @*@Model.Advisor.firstName + " " + @Model.Advisor.lastName*@
+            </td>
+        </tr>
+        <tr>
+            <td id="col-1">Grade:</td>
+            <td colspan="2" id="col-1">
+                @*@Model.Student.number*@
+            </td>
+        </tr>
+        <tr>
+            <td id="col-1">Date:</td>
+            <td colspan="2" id="col-1">
+                @DateTime.Today.ToString("MMMM dd, yyyy")
+            </td>
+        </tr>
+        <tr>
+            <td align="center">Academic Needs</td>
+            <td align="center">Educational Goals</td>
+            <td align="center">Career Goals/Category</td>
+        </tr>
+    </thead>
+    <tbody>
+        @{ 
+            /*foreach (var item in Model)  //this will loop through each item stored in the model from the database for the given student
+             *  and fill in the table accordingly-- the items names may change depending on database but the structure is correct
+            {*/
+            <tr>
+                <td id="col-2">
+                    @*@item.AcademicGoal*@  
+                </td>
+                <td id="col-2">
+                    @*@item.EducationGoal*@
+                </td>
+                <td id="col-2">
+                    @*@item.CareerGoal + "/" + item.Category*@
+                </td>
+
+            </tr>
+                //rowCounter++;
+            //}
+        }
+    </tbody>
+</table>    
+<a href="#" onclick="window.print(); return false;">Print</a>

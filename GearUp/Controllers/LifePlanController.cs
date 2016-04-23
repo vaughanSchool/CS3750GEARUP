@@ -8,6 +8,12 @@ namespace GearUp.Controllers
     [Authorize]
     public class LifePlanController : Controller
     {
+        //lists that contain the information from the database
+        List<string> needs = new List<string>();
+        List<string> education = new List<string>();
+        List<string> careerInputBox = new List<string>();
+        List<string> careerDropDown = new List<string>();
+
         public ActionResult Index()
         {
             ViewBag.Message = "LifePlans";
@@ -19,6 +25,12 @@ namespace GearUp.Controllers
         {
             GearUpDBEntities db = new GearUpDBEntities();
             ViewBag.Message = "Your LifePlan edit page.";
+
+            //set the lists to a view bag
+            ViewBag.Needs = needs;
+            ViewBag.Education = education;
+            ViewBag.CareerName = careerInputBox;
+            ViewBag.CareerCategory = careerDropDown;
 
             return View(db.Students);
         }
@@ -44,6 +56,33 @@ namespace GearUp.Controllers
             }
 
             //need to check if there is only a single student left
+
+            //update the right side of the form
+            //once we have db working then make calls to get this information
+            //for now going to make up data
+            needs.Add("FAFSA Help");
+            needs.Add("Math Tutoring");
+            needs.Add("ACT Prep");
+
+            education.Add("3.5 GPA");
+            education.Add("Graduate High Scool");
+            education.Add("Bachelor's Degree");
+
+            careerInputBox.Add("Programming");
+            careerInputBox.Add("Chef");
+            careerInputBox.Add("Start up own business");
+
+            careerDropDown.Add("Computers");
+            careerDropDown.Add("Culinary");
+            careerDropDown.Add("Business");
+
+            //set the lists to a view bag after being populated
+            ViewBag.Needs = needs;
+            ViewBag.Education = education;
+            ViewBag.CareerName = careerInputBox;
+            ViewBag.CareerCategory = careerDropDown;
+
+
             return View(students);
         }
 
@@ -54,6 +93,13 @@ namespace GearUp.Controllers
                 .Select(x => x.firstName + " " + x.lastName).ToList();
 
             return Json(students, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult Print()
+        {
+            ViewBag.Message = "Print";
+
+            return View();
         }
     }
 }
