@@ -14,6 +14,11 @@ namespace GearUp.Controllers
         List<string> careerInputBox = new List<string>();
         List<string> careerDropDown = new List<string>();
         //List<string> studentAdvisor = new List<string>();
+        List<string> academic = new List<string>();
+        List<string> schoolGoals = new List<string>();
+        List<string> career = new List<string>();
+        List<string> careerType = new List<string>();
+
 
         public ActionResult Index()
         {
@@ -32,7 +37,11 @@ namespace GearUp.Controllers
             ViewBag.Education = education;
             ViewBag.CareerName = careerInputBox;
             ViewBag.CareerCategory = careerDropDown;
-           // ViewBag.StudentAdvisor = studentAdvisor;
+            // ViewBag.StudentAdvisor = studentAdvisor;
+            ViewBag.Academic = academic;
+            ViewBag.SchoolGoals = schoolGoals;
+            ViewBag.Career = career;
+            ViewBag.CareerType = careerType;
 
             return View(db.Students);
         }
@@ -65,6 +74,9 @@ namespace GearUp.Controllers
             */
             }
 
+           
+
+
             //Need to check if student exsists
 
 
@@ -88,15 +100,25 @@ namespace GearUp.Controllers
             careerDropDown.Add("Culinary");
             careerDropDown.Add("Business");
 
+
+            
+
             //set the lists to a view bag after being populated
             ViewBag.Needs = needs;
             ViewBag.Education = education;
             ViewBag.CareerName = careerInputBox;
             ViewBag.CareerCategory = careerDropDown;
             //ViewBag.StudentAdvisor = studentAdvisor;
+            ViewBag.Academic = academic;
+            ViewBag.schoolGoals = schoolGoals;
+            ViewBag.Career = career;
+            ViewBag.CareerType = careerType;
 
             return View(students);
         }
+
+        
+
 
         public JsonResult GetStudents(string term)
         {
@@ -114,6 +136,51 @@ namespace GearUp.Controllers
                 .Select(x => x.firstName + " " + x.lastName).ToList();
 
             return Json(advisors, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public ActionResult input(string academicNeeds)
+        {
+            List<string> academic = null;
+            if (string.IsNullOrEmpty(academicNeeds))
+            {
+                //Do Nothing
+            }
+
+            academic.Add(academicNeeds);
+            ViewBag.Academic = academic;
+
+            return View(academic);
+        }
+
+        [HttpPost]
+        public ActionResult input2(string educationalGoals)
+        {
+            List<string> schoolGoals = null;
+            if (string.IsNullOrEmpty(educationalGoals))
+            {
+                //Do Nothing
+            }
+
+            schoolGoals.Add(educationalGoals);
+            ViewBag.SchoolGoals = schoolGoals;
+
+            return View(schoolGoals);
+        }
+
+        [HttpPost]
+        public ActionResult input3(string careerGoals)
+        {
+            List<string> career = null;
+            if (string.IsNullOrEmpty(careerGoals))
+            {
+                //Do Nothing
+            }
+
+            career.Add(careerGoals);
+            ViewBag.Career = career;
+
+            return View(career);
         }
 
         public ActionResult Print()

@@ -33,33 +33,64 @@
         <div id="left-section" class="col-md-4">
             <div>
                 
-                @using (@Html.BeginForm())
+                @using (@Html.BeginForm("edit", "LifePlan", FormMethod.Post))
                 {
 
                     @Html.Label("Academic Needs:") <br />
-                    @Html.TextBox("AcademicNeeds")
-                    <button type="submit">Enter</button>
-                    <button type="reset">Clear</button>
-                }             
-                
+                    @Html.TextBox("academicNeeds");                    
+                    <button type="submit">Enter</button><br /> 
+                  <div id="buttons">
+                      <button type="reset">Clear</button>
+                  </div>               
+                }                      
 
             </div>
+         <div id="output">
+            <div class="panel panel-default">
+                <div class="panel-body" id="output-area">
+                    @*Academic Needs Stuff Goes Here...*@
+
+                   @foreach (var academic in (List<string>)ViewBag.Academic)
+                   {
+                    <ul><li>@academic</li></ul>
+                   }
+                                  
+                </div>
+            </div>
+          </div>
+
             <div id="educational-goals">
                 @using (@Html.BeginForm())
                 {
 
                     @Html.Label("Educational Goals:") <br />
-                    @Html.TextBox("EducationalGoals")
-                    <button type="submit">Enter</button>
-                    <button type="reset">Clear</button>
+                    @Html.TextBox("educationalGoals")
+                    <button type="submit">Enter</button><br />
+                    <div id="buttons">
+                        <button type="reset">Clear</button>
+                    </div>
                 }
+            </div>
+
+            <div id="output">
+                <div class="panel panel-default">
+                    <div class="panel-body" id="output-area">
+                        @*Education Goals Stuff Goes Here...*@
+
+                        @foreach (var education in (List<string>)ViewBag.SchoolGoals)
+                        {
+                            <ul><li>@education</li></ul>
+                        }
+
+                    </div>
+                </div>
             </div>
             <div id="career-goals">
                 @using (@Html.BeginForm())
                 {
 
                     @Html.Label("Career Goals:") <br />
-                    @Html.TextBox("CareerGoals")
+                    @Html.TextBox("careerGoals")
                     
                         
                             <select id="CategoryType" name="CategoryType">
@@ -98,6 +129,20 @@
 
                 }
             </div>
+
+            <div id="career-output">
+                <div class="panel panel-default">
+                    <div class="panel-body" id="output-area">
+                        @*Career Goals Stuff Goes Here...*@
+
+                        @foreach (var careerGoal in (List<string>)ViewBag.Career)
+                        {
+                            <ul><li>@careerGoal</li></ul>
+                        }
+
+                    </div>
+                </div>
+            </div>
             <div>
                 <button class="btn btn-default">Cancel</button>
                 <butoon class="btn btn-primary">Submit</butoon>
@@ -112,7 +157,7 @@
                     Academic Needs
                 </div>
                 <div class="panel-body">
-                    @*Academic Needs Stuff Goes Here...*@
+                    @*academic needs Stuff Goes Here...*@
                     @foreach (var need in (List<string>)ViewBag.Needs)
                     {
                         <ul><li>@need</li></ul>

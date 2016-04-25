@@ -13,7 +13,7 @@
 }
 
 #buttons{
-    padding-left: 302px;
+    padding-left: 177px;
     padding-top: 3px;
 }
 
@@ -23,11 +23,24 @@
 
 
 
-#career-goals{
-    padding-top: 100px;
-    padding-bottom: 20px;
+#career-goals{    
+    padding-bottom: 20px;   
 }
 
-#educational-goals{
-    padding-top: 100px;
+
+
+#output{
+    padding-right: 185px;
+    margin-top: -25px; 
+    margin-bottom: 0px;   
 }
+
+#career-output{
+    margin-top: -75px;
+    padding-right: 185px;
+}
+
+#output-area{
+    height: 100px;
+}
+
