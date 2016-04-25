@@ -16,13 +16,18 @@
             {
                 <b>Student Name: </b>
                 @Html.TextBox("searchTerm", null, new { id = "txtStudentSearch" })
-                <input class="btn btn-primary" type="submit" value="Search" />
+                <input class="btn btn-sm btn-primary" type="submit" name="submit" value="Search" />
+
             }﻿
         </div>
         <div class="col-md-6">
             <b>Advisor: </b>
-            @Html.TextBox("searchTerms", null, new { id = "txtAdvisorSearch" })
-
+            @if (ViewBag.StudentAdvisor == "")
+            {
+                @Html.TextBox("searchTerms", null, new { id = "txtAdvisorSearch" })
+            }
+            else
+            { @Html.TextBox("serarchTerms", (string)ViewBag.StudentAdvisor, new { id = "txtAdvisorSearch" })}
         </div>
     </div>
     @* End of top section*@   
@@ -37,10 +42,10 @@
                 {
 
                     @Html.Label("Academic Needs:") <br />
-                    @Html.TextBox("academicNeeds");                    
-                    <button type="submit">Enter</button><br /> 
+                    @Html.TextBox("academicNeeds");
+                    <button class="btn btn-sm btn-primary" type="submit">Enter</button><br /> 
                   <div id="buttons">
-                      <button type="reset">Clear</button>
+                      <button class="btn btn-sm btn-default" type="reset">Clear</button>
                   </div>               
                 }                      
 
@@ -49,12 +54,10 @@
             <div class="panel panel-default">
                 <div class="panel-body" id="output-area">
                     @*Academic Needs Stuff Goes Here...*@
-
-                   @foreach (var academic in (List<string>)ViewBag.Academic)
-                   {
+                    @foreach (var academic in (List<string>)ViewBag.Academic)
+                    {
                     <ul><li>@academic</li></ul>
-                   }
-                                  
+                    }              
                 </div>
             </div>
           </div>
@@ -91,8 +94,6 @@
 
                     @Html.Label("Career Goals:") <br />
                     @Html.TextBox("careerGoals")
-                    
-                        
                             <select id="categorySelection" name="categorySelection">
                                 <option value=""></option>
                                 <option selected="selected" value="0">Animal Science</option>
