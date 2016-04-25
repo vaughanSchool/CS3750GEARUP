@@ -87,6 +87,7 @@ namespace GearUp.Controllers
             needs.Add("FAFSA Help");
             needs.Add("Math Tutoring");
             needs.Add("ACT Prep");
+            needs.Add("Scholarships Help");
 
             education.Add("3.5 GPA");
             education.Add("Graduate High Scool");

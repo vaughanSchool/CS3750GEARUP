@@ -44,3 +44,7 @@
     height: 105px;
 }
 
+.panel-body{
+    height: 110px;
+    overflow-y:scroll;
+}
