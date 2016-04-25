@@ -93,7 +93,7 @@
                     @Html.TextBox("careerGoals")
                     
                         
-                            <select id="CategoryType" name="CategoryType">
+                            <select id="categorySelection" name="categorySelection">
                                 <option value=""></option>
                                 <option selected="selected" value="0">Animal Science</option>
                                 <option value="1">Auto/Aircraft Mechanics</option>
@@ -135,10 +135,21 @@
                     <div class="panel-body" id="output-area">
                         @*Career Goals Stuff Goes Here...*@
 
-                        @foreach (var careerGoal in (List<string>)ViewBag.Career)
-                        {
-                            <ul><li>@careerGoal</li></ul>
-                        }
+                       @* if (((List<string>)ViewBag.Career) != null && ((List<string>)ViewBag.CareerType) != null)
+                           {
+                                List<string> name = (List<string>)ViewBag.Career;
+                                List<string> category = (List<string>)ViewBag.CareerType;
+                                List<string> output = new List<string>();
+
+                                for (int i = 0; i < name.Count; i++)
+                                {
+                                    output.Add(name.ElementAt(i) + " / " + category.ElementAt(i));
+                                }
+                                foreach (var career in output)
+                                {
+                                    <ul><li>@career</li></ul>
+                                }
+                           }*@
 
                     </div>
                 </div>

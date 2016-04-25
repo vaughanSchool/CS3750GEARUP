@@ -169,16 +169,20 @@ namespace GearUp.Controllers
         }
 
         [HttpPost]
-        public ActionResult input3(string careerGoals)
+        public ActionResult input3(string careerGoals, string categorySelection)
         {
             List<string> career = null;
+            List<string> careerType = null;
             if (string.IsNullOrEmpty(careerGoals))
             {
                 //Do Nothing
             }
 
+
             career.Add(careerGoals);
+            careerType.Add(categorySelection);
             ViewBag.Career = career;
+            ViewBag.CareerType = careerType; 
 
             return View(career);
         }
